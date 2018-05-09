@@ -1,3 +1,4 @@
+DELETE FROM User_Request;
 DELETE FROM User_Likes_Cat;
 DELETE FROM Cat_Detail;
 DELETE FROM Cat_info;

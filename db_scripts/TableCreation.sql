@@ -46,3 +46,12 @@ CREATE TABLE User_Likes_Cat
 	 FOREIGN KEY (cat_id) REFERENCES Cat_Info (cat_id)
 	 	ON DELETE CASCADE
 	);
+
+CREATE TABLE User_Request
+	(phone_num 			varchar(15) NOT NULL,
+	 cat_id				int NOT NULL,
+	 FOREIGN KEY (phone_num) REFERENCES User_Info (phone_num)
+	 	ON DELETE CASCADE,
+	 FOREIGN KEY (cat_id) REFERENCES Cat_Info (cat_id)
+	 	ON DELETE CASCADE
+	);
