@@ -27,11 +27,7 @@ public class LoginActivity extends AppCompatActivity
         successBTN.setOnClickListener(new View.OnClickListener(){
 
             @Override
-            public void onClick(View view) {
-
-                //Goes to main page
-            }
-        });
+            public void onClick(View view) { signIn(); }});
 
         toRegisterBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,20 +40,6 @@ public class LoginActivity extends AppCompatActivity
     private void goToRegistration(){
         Intent intent = new Intent(this,RegistrationActivity.class);
         startActivity(intent);
-    }
-
-    public void onClick(View view)
-    {
-        switch (view.getId())
-        {
-            case R.id.continueBTN:
-                signIn();
-                break;
-
-            default:
-                break;
-
-        }
     }
 
     private void signIn()

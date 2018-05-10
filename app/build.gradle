@@ -26,12 +26,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-<<<<<<< HEAD
     implementation 'com.android.support:design:26.1.0'
-=======
     androidTestCompile 'com.android.support:support-annotations:27.1.1'
-
     //implementation 'com.android.support:appcompat-v7:27.1.1'
     //implementation 'com.android.support:design:27.1.1'
->>>>>>> 3623887897c2528073108bf8d54b58103eefd219
 }
