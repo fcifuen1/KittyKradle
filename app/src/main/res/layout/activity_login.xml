@@ -1,10 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/yellow"
     tools:context="cmsc491.kittykradle.LoginActivity">
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Log-In"
+            android:textAlignment="center"
+            android:textColor="@color/white" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/logInUsername"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Username"
+                android:textAlignment="center"
+                android:background="@color/white"/>
+
+            <EditText
+                android:id="@+id/logInPassword"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:textAlignment="center"
+                android:background="@color/white"/>
+            <Button
+                android:id="@+id/continueBTN"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Continue"
+                android:background="@color/pink"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Not a Member?"
+            android:textAlignment="center"/>
+        <Button
+            android:id="@+id/registerBTN"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Register"
+            android:background="@color/blue"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+</FrameLayout>

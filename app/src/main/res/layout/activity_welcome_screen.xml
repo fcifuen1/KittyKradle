@@ -5,10 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="cmsc491.kittykradle.WelcomeScreen"
-    android:background="#FFD056">
-
-
-    <!--<item android:fillColor="#FFD056"></item>-->
+    android:background="@color/yellow">
 
     <ImageView
         android:src="@drawable/logo_yellow"
