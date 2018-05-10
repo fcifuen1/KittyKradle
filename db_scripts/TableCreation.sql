@@ -1,5 +1,7 @@
 CREATE TABLE User_Info
 	(phone_num			varchar(15) NOT NULL,
+	 username			varchar(10) NOT NULL,
+	 password			varchar(20) NOT NULL,
 	 first_name			varchar(30),
 	 last_name			varchar(30),
 	 background_check	tinyint,
