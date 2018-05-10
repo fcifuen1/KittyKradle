@@ -1,12 +1,14 @@
 package cmsc491.kittykradle;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 public class WelcomeScreen extends AppCompatActivity
 {
+    private final int DELAY = 1000 * 2; // 2 seconds
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +21,6 @@ public class WelcomeScreen extends AppCompatActivity
                 startActivity(intent);
                 finish();
             }
-        }, 5000);
+        }, DELAY);
     }
 }
