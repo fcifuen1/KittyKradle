@@ -47,9 +47,9 @@ public class LoginActivity extends AppCompatActivity
 
             @Override
             public void onClick(View view) {
-                BackgroundTask task = new BackgroundTask();
-                task.execute(username.getText().toString(),password.getText().toString())
-                //signIn();
+                //BackgroundTask task = new BackgroundTask();
+                //task.execute(username.getText().toString(),password.getText().toString());
+                signIn();
             }});
 
         toRegisterBTN.setOnClickListener(new View.OnClickListener() {
