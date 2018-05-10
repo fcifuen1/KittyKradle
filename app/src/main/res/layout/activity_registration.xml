@@ -11,7 +11,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
         <TextView
             android:layout_width="fill_parent"
@@ -19,17 +21,17 @@
             android:text="Registration"
             android:textAlignment="center"/>
         <EditText
-            android:id="@+id/firstName"
+            android:id="@+id/userName"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="First Name"
+            android:hint="Enter Username"
             android:textAlignment="center"
             android:background="@color/white"/>
         <EditText
-            android:id="@+id/lastName"
+            android:id="@+id/userPassword"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Last Name"
+            android:hint="Password"
             android:textAlignment="center"
             android:background="@color/white"/>
         <EditText
@@ -40,6 +42,7 @@
             android:textAlignment="center"
             android:background="@color/white"/>
         <Button
+            android:id="@+id/registerBTN"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Register"

@@ -20,7 +20,9 @@
             android:layout_height="wrap_content"
             android:text="Log-In"
             android:textAlignment="center"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:paddingBottom="50dp"/>
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -32,7 +34,9 @@
                 android:layout_height="wrap_content"
                 android:hint="Username"
                 android:textAlignment="center"
-                android:background="@color/white"/>
+                android:background="@color/white"
+                android:textSize="20dp"
+                android:padding="10dp" />
 
             <EditText
                 android:id="@+id/logInPassword"
@@ -40,28 +44,33 @@
                 android:layout_height="wrap_content"
                 android:hint="Password"
                 android:textAlignment="center"
-                android:background="@color/white"/>
+                android:background="@color/white"
+                android:textSize="20dp"
+                android:padding="10dp"/>
             <Button
                 android:id="@+id/continueBTN"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Continue"
                 android:background="@color/pink"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textSize="20dp"/>
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Not a Member?"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:textSize="15dp"/>
         <Button
-            android:id="@+id/registerBTN"
+            android:id="@+id/toregisterBTN"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Register"
             android:background="@color/blue"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textSize="20dp"/>
 
     </LinearLayout>
 
