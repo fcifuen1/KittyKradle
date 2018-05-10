@@ -7,13 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class LoginActivity extends AppCompatActivity {
-
+public class LoginActivity extends AppCompatActivity
+{
     EditText username, password;
     Button successBTN, toRegisterBTN;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
@@ -43,5 +44,25 @@ public class LoginActivity extends AppCompatActivity {
     private void goToRegistration(){
         Intent intent = new Intent(this,RegistrationActivity.class);
         startActivity(intent);
+    }
+
+    public void onClick(View view)
+    {
+        switch (view.getId())
+        {
+            case R.id.continueBTN:
+                signIn();
+                break;
+
+            default:
+                break;
+
+        }
+    }
+
+    private void signIn()
+    {
+        Intent i = new Intent(this, SidebarActivity.class);
+        startActivity(i);
     }
 }
