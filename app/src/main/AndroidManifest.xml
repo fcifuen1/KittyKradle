@@ -23,6 +23,8 @@
             android:label="@string/title_activity_sidebar"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CatProfileActivity" />
+
+        <activity android:name=".SearchResultActivity"></activity>
         <activity android:name=".RequestFormActivity" />
         <activity
             android:name=".FAQActivity"
