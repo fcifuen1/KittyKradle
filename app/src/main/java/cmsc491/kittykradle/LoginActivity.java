@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity
     Button successBTN, toRegisterBTN;
 
     //URL link to server-side
-    String urlLink = "https://c49deda6.ngrok.io";
+    String urlLink = "https://08e297e5.ngrok.io";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity
         @Override
         protected String doInBackground(String... params) {
             try{
-                url = new URL(urlLink + "something here too");
+                url = new URL(urlLink + "/kittykradle/LogIn.php");
                 conn = (HttpsURLConnection) url.openConnection();
                 conn.setReadTimeout(1000);
                 conn.setRequestMethod("POST");
@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity
                 conn.setDoOutput(true);
 
                 Uri.Builder builder = new Uri.Builder()
-                        .appendQueryParameter("userName",params[0])
+                        .appendQueryParameter("username",params[0])
                         .appendQueryParameter("password",params[1]);
                 String query = builder.build().getEncodedQuery();
                 OutputStream outputpost = conn.getOutputStream();
