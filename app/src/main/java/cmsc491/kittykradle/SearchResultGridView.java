@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -16,19 +17,18 @@ import android.widget.TextView;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link SearchResultGridView.OnFragmentInteractionListener} interface
+
  * to handle interaction events.
  * Use the {@link SearchResultGridView#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SearchResultGridView extends Fragment implements View.OnClickListener, View.OnTouchListener{
+public class SearchResultGridView extends Fragment{
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_CATID = "catId";
 
     private String[] mCatId;
-
-    private OnFragmentInteractionListener mListener;
+    private CatThumbnail[] thumbnails;
 
 
 
@@ -51,6 +51,9 @@ public class SearchResultGridView extends Fragment implements View.OnClickListen
         return fragment;
     }
 
+    public void setThumbnailFragments(CatThumbnail[] thumbnails){
+        this.thumbnails=thumbnails;
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,121 +65,40 @@ public class SearchResultGridView extends Fragment implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        if (savedInstanceState == null) {
+            getChildFragmentManager().beginTransaction()
+                    .replace(R.id.thumbnail1, thumbnails[0])
+                    .replace(R.id.thumbnail2, thumbnails[1])
+                    .replace(R.id.thumbnail3, thumbnails[2])
+                    .replace(R.id.thumbnail4, thumbnails[3])
+                    .replace(R.id.thumbnail5, thumbnails[4])
+                    .replace(R.id.thumbnail6, thumbnails[5])
+                    .replace(R.id.thumbnail7, thumbnails[6])
+                    .replace(R.id.thumbnail8, thumbnails[7])
+                    .addToBackStack(null)
+                    .commit();
+        }
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_search_result_grid_view, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onCatPressed(Uri uri) {
-        //Intent catInfoIntent =  new Intent(getActivity());
-        //startActivity(catInfoIntent);
-    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
-    @Override
-    public void onClick(View v) {
-        switch(v.getId()){
-            case R.id.thumbnail1:
 
-                break;
-            case R.id.thumbnail2:
 
-                break;
-            case R.id.thumbnail3:
 
-                break;
-            case R.id.thumbnail4:
 
-                break;
-            case R.id.thumbnail5:
-
-                break;
-            case R.id.thumbnail6:
-
-                break;
-            case R.id.thumbnail7:
-
-                break;
-            case R.id.thumbnail8:
-
-                break;
-            default:
-                break;
-        }
-    }
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        int action = event.getActionMasked();
-        switch(v.getId()){
-            case R.id.thumbnail1:
-                TextView text = getView().findViewById(R.id.textView1);
-                if(action==MotionEvent.ACTION_DOWN||action== MotionEvent.ACTION_POINTER_DOWN){
-                    text.setBackgroundResource(R.drawable.text_border_male);
-                    text.setTextColor(ContextCompat.getColor(getContext(),R.color.blue));
-                }
-                else if(action==MotionEvent.ACTION_UP||action==MotionEvent.ACTION_POINTER_UP){
-                    text.setBackgroundResource(R.color.blue);
-                    text.setTextColor(ContextCompat.getColor(getContext(),R.color.white));
-                }
-                break;
-            case R.id.thumbnail2:
-
-                break;
-            case R.id.thumbnail3:
-
-                break;
-            case R.id.thumbnail4:
-
-                break;
-            case R.id.thumbnail5:
-
-                break;
-            case R.id.thumbnail6:
-
-                break;
-            case R.id.thumbnail7:
-
-                break;
-            case R.id.thumbnail8:
-
-                break;
-            default:
-                break;
-        }
-        return false;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 
 
 }

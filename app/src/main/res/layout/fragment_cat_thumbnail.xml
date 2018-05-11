@@ -16,18 +16,21 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
+            android:layout_weight="5"
             android:src="@mipmap/kk_logo" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
+            android:layout_height="0dp"
             android:background="@color/blue"
             android:text="TextView"
             android:textAlignment="center"
+            android:layout_weight="1"
+            android:autoSizeTextType="uniform"
             android:textColor="@color/white" />
     </LinearLayout>
 

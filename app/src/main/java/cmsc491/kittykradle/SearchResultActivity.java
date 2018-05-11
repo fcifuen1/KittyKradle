@@ -1,18 +1,23 @@
 package cmsc491.kittykradle;
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.os.AsyncTask;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.util.LruCache;
 import android.view.View;
 import android.widget.Button;
 
-
-
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 
 public class SearchResultActivity extends FragmentActivity implements View.OnClickListener,CatThumbnail.OnFragmentInteractionListener{
@@ -27,12 +32,25 @@ public class SearchResultActivity extends FragmentActivity implements View.OnCli
     private String currentView;
     final String GRID_VIEW="grid view";
     final String LIST_VIEW="list view";
+//test data
+    private String[] imgUrls={
+            "http://oi1126.photobucket.com/albums/l606/kuochine/angel_zpskxewvgnw.jpg",
+            "http://i1126.photobucket.com/albums/l606/kuochine/wombat_zpszfcg8lm8.jpg",
+            "http://i1126.photobucket.com/albums/l606/kuochine/butters_zpsr0bl0mev.jpg",
+            "http://i1126.photobucket.com/albums/l606/kuochine/joey_zpsniyjhxov.jpeg",
+            "http://i1126.photobucket.com/albums/l606/kuochine/nando_zpsqtire7hv.jpg",
+            "http://i1126.photobucket.com/albums/l606/kuochine/cucumber_zpsnepyeosq.jpg",
+            "http://i1126.photobucket.com/albums/l606/kuochine/jasmine_zpslwaba5va.jpg",
+            "http://i1126.photobucket.com/albums/l606/kuochine/paisley_zpseh1v9saj.jpg"};
+    private String[] names={"angel","wombat","butter","joey","nando","cucumber","jasmine","paisley"};
+    private int[] ids={1,2,3,4,5,6,7,8};
+    private String[] genders={"male","female","male","female","male","female","male","female"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
-        changeViewButton = findViewById(R.id.view_button);
+        changeViewButton = findViewById(R.id.change_view_button);
         changeViewButton.setOnClickListener(this);
 
         RetainFragment retainFragment =
@@ -54,8 +72,9 @@ public class SearchResultActivity extends FragmentActivity implements View.OnCli
         }
         for (int i = 0; i < thumbnails.length; i++) {
             thumbnails[i] = new CatThumbnail();
-
+            thumbnails[i].setCat(ids[i],names[i],genders[i],imgUrls[i]);
         }
+
         gridView = new SearchResultGridView();
         gridView.setThumbnailFragments(thumbnails);
         listView = new SearchResultListView();
@@ -110,13 +129,14 @@ public class SearchResultActivity extends FragmentActivity implements View.OnCli
     }
 
     private void startCatInfoActivity(String catId){
-
+        Intent intent = new Intent(getApplicationContext(), CatProfileActivity.class);
+        startActivity(intent);
     }
 
     @Override
-    public void onThumbnailSelect(CatThumbnail ct) {
+    public void onThumbnailSelected(CatThumbnail ct) {
         if(selectedThumbnail!=null){
-            selectedThumbnail.unselect();
+            selectedThumbnail.deselect();
         }
         ct.select();
         selectedThumbnail=ct;
@@ -125,13 +145,15 @@ public class SearchResultActivity extends FragmentActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.view_button:
+            case R.id.change_view_button:
                 changeView();
                 break;
             default:
                 break;
         }
     }
+
+
 }
 
 

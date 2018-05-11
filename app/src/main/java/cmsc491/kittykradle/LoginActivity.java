@@ -74,54 +74,54 @@ public class LoginActivity extends AppCompatActivity
 
     private class BackgroundTask extends AsyncTask<String, String, String>{
 
-        HttpsURLConnection conn;
-        URL url = null;
+            HttpsURLConnection conn;
+            URL url = null;
 
-        @Override
-        protected void onPreExecute(){super.onPreExecute(); }
+            @Override
+            protected void onPreExecute(){super.onPreExecute(); }
 
-        //Grunt work to send data to the server-side
-        @Override
-        protected String doInBackground(String... params) {
-            try{
-                url = new URL(urlLink + "something here too");
-                conn = (HttpsURLConnection) url.openConnection();
-                conn.setReadTimeout(1000);
-                conn.setRequestMethod("POST");
+            //Grunt work to send data to the server-side
+            @Override
+            protected String doInBackground(String... params) {
+                try{
+                    url = new URL(urlLink + "something here too");
+                    conn = (HttpsURLConnection) url.openConnection();
+                    conn.setReadTimeout(1000);
+                    conn.setRequestMethod("POST");
 
-                conn.setDoInput(true);
-                conn.setDoOutput(true);
+                    conn.setDoInput(true);
+                    conn.setDoOutput(true);
 
-                Uri.Builder builder = new Uri.Builder()
-                        .appendQueryParameter("userName",params[0])
-                        .appendQueryParameter("password",params[1]);
-                String query = builder.build().getEncodedQuery();
-                OutputStream outputpost = conn.getOutputStream();
-                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputpost, "UTF-8"));
-                writer.write(query);
-                writer.flush();
-                writer.close();
-                outputpost.close();
-                conn.connect();
+                    Uri.Builder builder = new Uri.Builder()
+                            .appendQueryParameter("userName",params[0])
+                            .appendQueryParameter("password",params[1]);
+                    String query = builder.build().getEncodedQuery();
+                    OutputStream outputpost = conn.getOutputStream();
+                    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputpost, "UTF-8"));
+                    writer.write(query);
+                    writer.flush();
+                    writer.close();
+                    outputpost.close();
+                    conn.connect();
 
-                int responseCode = conn.getResponseCode();
-                if(responseCode == HttpsURLConnection.HTTP_OK){
-                    InputStream input = conn.getInputStream();
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-                    StringBuilder result = new StringBuilder();
-                    String line;
-                    while((line = reader.readLine()) != null){
-                        result.append(line);
+                    int responseCode = conn.getResponseCode();
+                    if(responseCode == HttpsURLConnection.HTTP_OK){
+                        InputStream input = conn.getInputStream();
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                        StringBuilder result = new StringBuilder();
+                        String line;
+                        while((line = reader.readLine()) != null){
+                            result.append(line);
+                        }
+                        return(result.toString());
+                    }else{
+                        return ("Bad Connection");
                     }
-                    return(result.toString());
-                }else{
-                    return ("Bad Connection");
+                }catch (Exception e){
+                    e.printStackTrace();
                 }
-            }catch (Exception e){
-                e.printStackTrace();
+                return null;
             }
-            return null;
-        }
         @Override
         protected void onProgressUpdate(String... values){
             super.onProgressUpdate(values);
