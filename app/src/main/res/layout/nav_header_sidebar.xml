@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Header for the sidebar -->
+<!-- XML for the sidebar -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -15,6 +15,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
+    <!-- Profile Image on top of sidebar -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -23,6 +24,7 @@
         app:srcCompat="@mipmap/kk_logo_round"
         android:gravity="center"/>
 
+    <!-- Username display under image -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
