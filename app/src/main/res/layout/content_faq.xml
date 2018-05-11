@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".FAQActivity"
+    tools:showIn="@layout/activity_faq">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/faqLabel"
+                android:text="faq."
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="30dp"
+                android:textColor="@color/pink"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                >
+                <TextView
+                    android:id="@+id/searchQuestion"
+                    android:text="How do I search for a cat?"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/blue"
+                    android:layout_marginLeft="20dp"
+                    />
+                <ImageButton
+                    android:id="@+id/searchButton"
+                    android:src="@drawable/arrow_grey_right_scaled_down"
+                    android:background="#0000"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="100dp"
+                    />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/searchText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="100dp"
+                android:textSize="20dp"
+                android:textColor="@color/darkGray"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                >
+                <TextView
+                    android:id="@+id/adoptQuestion"
+                    android:text="How do I adopt a cat I see \non Kitty Kradle?"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/blue"
+                    android:layout_marginLeft="20dp"
+                    />
+                <ImageButton
+                    android:id="@+id/adoptButton"
+                    android:src="@drawable/arrow_grey_right_scaled_down"
+                    android:background="#0000"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="98dp"
+                    />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/adoptText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="100dp"
+                android:textSize="20dp"
+                android:textColor="@color/darkGray"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                >
+                <TextView
+                    android:id="@+id/approvalQuestion"
+                    android:text="How will I know if I've been \napproved to adopt a cat?"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/blue"
+                    android:layout_marginLeft="20dp"
+                    />
+                <ImageButton
+                    android:id="@+id/approvalButton"
+                    android:src="@drawable/arrow_grey_right_scaled_down"
+                    android:background="#0000"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="83dp"
+                    />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/approvalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="100dp"
+                android:textSize="20dp"
+                android:textColor="@color/darkGray"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

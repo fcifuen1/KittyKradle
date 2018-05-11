@@ -23,7 +23,11 @@
             android:label="@string/title_activity_sidebar"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CatProfileActivity" />
-        <activity android:name=".RequestFormActivity"></activity>
+        <activity android:name=".RequestFormActivity" />
+        <activity
+            android:name=".FAQActivity"
+            android:label="@string/title_activity_faq"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
