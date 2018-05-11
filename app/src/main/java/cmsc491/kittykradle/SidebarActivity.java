@@ -27,13 +27,13 @@ public class SidebarActivity extends AppCompatActivity
         setContentView(R.layout.activity_sidebar);
 
         // toolbar is the menu button at the top left of the screen
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         // Set up menu bar at top corner
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.hamburger_white);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
 
         drawerLayout = findViewById(R.id.drawer_layout);
 
@@ -117,32 +117,32 @@ public class SidebarActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item)
     {
-        // Handle navigation view item clicks here.
+        // Handle sidebar navigation items
         switch (item.getItemId())
         {
             case R.id.home:
+                // Load Home fragment
+                break;
+
+            case R.id.search:
+                // Load search fragment
+                break;
+
+            case R.id.favorites:
+                // Load favorites fragment
+                break;
+
+            case R.id.about:
+                // Load about fragment
+                break;
+
+            case R.id.logout:
+                // Clear Activity stack and send user to Login Activity
                 break;
 
             default:
                 break;
         }
-
-
-        /*
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
-        */
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
