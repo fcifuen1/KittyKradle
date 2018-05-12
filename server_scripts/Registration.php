@@ -4,6 +4,14 @@
 		$password = $_POST['password'];
 		$email = $_POST['email'];
 
+		//Other fields that has to be set to null for the code to work
+		$phone_num = NULL;
+		$fn = NULL;
+		$ln = NULL;
+		$background_check = NULL;
+		$pet_insurance = NULL;
+		$picture_url = NULL;
+
 		//Database Connection variable
 		$dbname = "kittykradle";
 		$server = "localhost";
@@ -24,10 +32,10 @@
 			$valid = filter_var($email, FILTER_VALIDATE_EMAIL);
 			return $valid;
 		}
-		function doesUserExist($user,$email,$conn){
-			$sql = "SELECT userName, email FROM friend WHERE userName = ? OR email = ?";
+		function doesUserExist($username,$email,$conn){
+			$sql = "SELECT username, email FROM user_info WHERE username = ? OR email = ?";
 			$query = $conn->prepare($sql);
-			$query->bind_param("ss",$user,$email);
+			$query->bind_param("ss",$username,$email);
 			$query->execute();
 			$query->store_result();
 			if($query->num_rows > 0){
@@ -38,8 +46,8 @@
 				return false;
 			}
 		}
-		function createNewUser($conn,$user, $pass, $email, $latitude, $longitude){
-			$sql = "INSERT INTO friend (userName,password,email,latitude,longitude) VALUES (?, ?, ?, ?, ?)";
+		function createNewUser($conn,$username, $password, $email){
+			$sql = "INSERT INTO user_info (phone_num,username,password,email,first_name,last_name,background_check,pet_insurance,picture_url) VALUES (?,?,?,?,?,?,?,?,?)";
 			$query = $conn->prepare($sql);
 			//$query->bind_param("sssss", $user, $pass, $email, $latitude, $longitude);
 			//Error Checking
@@ -47,7 +55,7 @@
 			{
 				echo "false";
 			}
-			if (!$query->bind_param("sssss", $user, $pass, $email, $latitude, $longitude))
+			if (!$query->bind_param("ssssssiis", $phone_num,$username, $password, $email, $fn, $ln,$background_check,$pet_insurance,$picture_url))
 			{
 				echo "false";
 			}
@@ -62,12 +70,12 @@
 		//==========================================================================
 		$validEmail = isValidEmail($email);
 		if($validEmail){
-			$exist = doesUserExist($user,$email,$conn);
+			$exist = doesUserExist($username,$email,$conn);
 			if($exist){
 				echo "false";
 			}else{
-				createNewUser($conn,$user, $pass, $email, $latitude, $longitude);
-				echo "true";
+				createNewUser($conn,$username, $password, $email);
+				echo "success";
 			}
 		}else{
 			echo "false";
