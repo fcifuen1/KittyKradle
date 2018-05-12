@@ -28,6 +28,9 @@
                 android:textSize="30dp"
                 android:textColor="@color/pink"
                 />
+
+            <!-- THE FIRST BUTTON, THE SEARCH BUTTON -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,11 +48,13 @@
                     />
                 <ImageButton
                     android:id="@+id/searchButton"
-                    android:src="@drawable/arrow_grey_right_scaled_down"
+                    android:src="@drawable/arrow_grey_right"
                     android:background="#0000"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="100dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
                     />
             </LinearLayout>
             <TextView
@@ -62,11 +67,13 @@
                 android:textColor="@color/darkGray"
                 />
 
+            <!-- THE SECOND BUTTON, THE ADOPT BUTTON -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 >
                 <TextView
                     android:id="@+id/adoptQuestion"
@@ -79,11 +86,13 @@
                     />
                 <ImageButton
                     android:id="@+id/adoptButton"
-                    android:src="@drawable/arrow_grey_right_scaled_down"
+                    android:src="@drawable/arrow_grey_right"
                     android:background="#0000"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="98dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="90dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
                     />
             </LinearLayout>
             <TextView
@@ -96,11 +105,13 @@
                 android:textColor="@color/darkGray"
                 />
 
+            <!-- THE THIRD BUTTON, THE APPROVAL BUTTON -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 >
                 <TextView
                     android:id="@+id/approvalQuestion"
@@ -113,11 +124,13 @@
                     />
                 <ImageButton
                     android:id="@+id/approvalButton"
-                    android:src="@drawable/arrow_grey_right_scaled_down"
+                    android:src="@drawable/arrow_grey_right"
                     android:background="#0000"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="83dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
                     />
             </LinearLayout>
             <TextView
@@ -128,6 +141,108 @@
                 android:layout_marginRight="100dp"
                 android:textSize="20dp"
                 android:textColor="@color/darkGray"
+                />
+
+            <!-- THE FOURTH BUTTON, THE ADOPTABILITY QUESTION -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                >
+                <TextView
+                    android:id="@+id/adoptabilityQuestion"
+                    android:text="Is the cat I see on Kitty \nKradle still adoptable?"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/blue"
+                    android:layout_marginLeft="20dp"
+                    />
+                <ImageButton
+                    android:id="@+id/adoptabilityButton"
+                    android:src="@drawable/arrow_grey_right"
+                    android:background="#0000"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="117dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/adoptabilityText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="100dp"
+                android:textSize="20dp"
+                android:textColor="@color/darkGray"
+                />
+
+            <!-- THE FIFTH BUTTON, THE STATE BUTTON -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                >
+                <TextView
+                    android:id="@+id/stateQuestion"
+                    android:text="Can I adopt a cat who's \nout of state?"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/blue"
+                    android:layout_marginLeft="20dp"
+                    />
+                <ImageButton
+                    android:id="@+id/stateButton"
+                    android:src="@drawable/arrow_grey_right"
+                    android:background="#0000"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="115dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/stateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="100dp"
+                android:textSize="20dp"
+                android:textColor="@color/darkGray"
+                />
+
+            <!-- the post-faq contact us stuff -->
+
+            <TextView
+                android:id="@+id/contactText"
+                android:text="any other questions?"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:textSize="20dp"
+                android:textColor="@color/darkGray"
+                />
+            <ImageButton
+                android:id="@+id/contactButton"
+                android:src="@drawable/contact_button_pink"
+                android:background="#0000"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
                 />
 
         </LinearLayout>

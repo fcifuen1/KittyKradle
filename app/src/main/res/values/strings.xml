@@ -31,11 +31,12 @@
         <item>2-3</item>
         <item>4+</item>
     </string-array>
-    
+
     <string-array name="options_size">
         <item>no preferences</item>
         <item>small</item>
         <item>medium</item>
         <item>large</item>
     </string-array>
+    <string name="title_activity_contact">ContactActivity</string>
 </resources>
