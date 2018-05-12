@@ -18,11 +18,11 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Log-In"
+            android:text="log - in"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="30dp"
-            android:paddingBottom="30dp"/>
+            android:textSize="40dp"
+            android:layout_marginBottom="30dp"/>
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -32,9 +32,10 @@
                 android:id="@+id/logInUsername"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:hint="Username"
+                android:hint="username"
+                android:textColorHint="#FFB6C1"
                 android:textAlignment="center"
-                android:background="@color/white"
+                android:background="@drawable/roundedtextbox"
                 android:textSize="20dp"
                 android:padding="10dp"
                 android:layout_margin="10dp"/>
@@ -43,10 +44,11 @@
                 android:id="@+id/logInPassword"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="password"
+                android:textColorHint="#FFB6C1"
                 android:inputType="textPassword"
                 android:textAlignment="center"
-                android:background="@color/white"
+                android:background="@drawable/roundedtextbox"
                 android:textSize="20dp"
                 android:padding="10dp"
                 android:layout_margin="10dp"/>
@@ -54,25 +56,28 @@
                 android:id="@+id/continueBTN"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Continue"
-                android:background="@color/pink"
+                android:text="continue"
+                android:background="@drawable/pinkbutton"
                 android:textColor="@color/white"
                 android:textSize="20dp"
-                android:layout_margin="10dp"/>
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="30dp"/>
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Not a Member?"
+            android:text="not a member?"
             android:textAlignment="center"
             android:textSize="15dp"/>
         <Button
             android:id="@+id/toregisterBTN"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Register"
-            android:background="@color/blue"
+            android:text="register"
+            android:background="@drawable/bluebutton"
             android:textColor="@color/white"
             android:textSize="20dp"
             android:layout_margin="10dp"/>

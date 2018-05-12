@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/yellow"
     tools:context="cmsc491.kittykradle.SearchActivity">
 
     <LinearLayout
@@ -13,7 +13,8 @@
         android:orientation="vertical"
         android:gravity="center"
         android:layout_marginLeft="25sp"
-        android:layout_marginRight="25sp">
+        android:layout_marginRight="25sp"
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/header"
@@ -119,8 +120,9 @@
             android:layout_marginLeft="25sp"
             android:layout_marginRight="25sp"
             android:text="search"
+            android:background="@color/blue"
             android:onClick="search"/>
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

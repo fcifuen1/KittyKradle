@@ -18,18 +18,21 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Registration"
+            android:text="register"
             android:textAlignment="center"
-            android:textSize="30dp"/>
+            android:textSize="40dp"
+            android:layout_marginBottom="30dp"
+            android:textColor="@color/white"/>
         <EditText
             android:id="@+id/userName"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
+            android:hint="username"
+            android:textColorHint="#FFB6C1"
             android:textAlignment="center"
-            android:background="@color/white"
+            android:background="@drawable/roundedtextbox"
             android:padding="10dp"
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             android:textSize="20dp"/>
 
         <EditText
@@ -37,29 +40,31 @@
             android:inputType="textPassword"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="password"
+            android:textColorHint="#FFB6C1"
             android:padding="10dp"
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             android:textAlignment="center"
-            android:background="@color/white"
+            android:background="@drawable/roundedtextbox"
             android:textSize="20dp"/>
         <EditText
             android:id="@+id/email"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="E-Mail"
+            android:hint="e-mail"
+            android:textColorHint="#FFB6C1"
             android:textAlignment="center"
-            android:background="@color/white"
+            android:background="@drawable/roundedtextbox"
             android:padding="10dp"
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             android:textSize="20dp"/>
 
         <Button
             android:id="@+id/registerBTN"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Register"
-            android:background="@color/pink"
+            android:text="register"
+            android:background="@drawable/pinkbutton"
             android:textColor="@color/white"
             android:layout_margin="5dp"
             android:textSize="20dp"/>
