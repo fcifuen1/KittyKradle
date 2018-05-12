@@ -1,8 +1,10 @@
 package cmsc491.kittykradle;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.view.Gravity;
 import android.view.View;
@@ -19,6 +21,7 @@ public class SidebarActivity extends AppCompatActivity
        implements NavigationView.OnNavigationItemSelectedListener
 {
     private DrawerLayout drawerLayout;
+    private FragmentManager fm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,9 +36,10 @@ public class SidebarActivity extends AppCompatActivity
         // Set up menu bar at top corner
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
+        actionbar.setHomeAsUpIndicator(R.drawable.hamburger_white);
 
         drawerLayout = findViewById(R.id.drawer_layout);
+        fm = getSupportFragmentManager();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -45,30 +49,6 @@ public class SidebarActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
-
-        /*
-        drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
-
-            }
-
-            @Override
-            public void onDrawerOpened(View drawerView) {
-
-            }
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-
-            }
-
-            @Override
-            public void onDrawerStateChanged(int newState) {
-
-            }
-        });
-        */
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -125,7 +105,8 @@ public class SidebarActivity extends AppCompatActivity
                 break;
 
             case R.id.search:
-                // Load search fragment
+                // Load search activity
+                search();
                 break;
 
             case R.id.favorites:
@@ -133,11 +114,12 @@ public class SidebarActivity extends AppCompatActivity
                 break;
 
             case R.id.about:
-                // Load about fragment
+                // Load about fragment -- mission, faq, cat care
+                goToFaq();
                 break;
 
             case R.id.logout:
-                // Clear Activity stack and send user to Login Activity
+                logout();
                 break;
 
             default:
@@ -147,5 +129,28 @@ public class SidebarActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void goToFaq()
+    {
+        Intent i = new Intent(this, FAQActivity.class);
+        startActivity(i);
+    }
+
+    // Goes to the search screen
+    private void search()
+    {
+        Intent i = new Intent(this, SearchActivity.class);
+        startActivity(i);
+    }
+
+    // Clears the activity stack and goes back to the Login page
+    private void logout()
+    {
+        Intent i = new Intent(this, LoginActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
     }
 }

@@ -63,12 +63,13 @@ public class LoginActivity extends AppCompatActivity
     private void goToRegistration(){
         Intent intent = new Intent(this,RegistrationActivity.class);
         //Passing the link to other activities
-        intent.putExtra("link",urlLink);
+        intent.putExtra("link", urlLink);
         startActivity(intent);
     }
 
     private void signIn(){
         Intent i = new Intent(this, SidebarActivity.class);
+        i.putExtra("Username", username.getText().toString());
         startActivity(i);
     }
 

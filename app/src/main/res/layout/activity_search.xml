@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cmsc491.kittykradle.SearchActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginLeft="25sp"
+        android:layout_marginRight="25sp">
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40sp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:text="my dream cat is..."
+            android:textColor="@color/blue"
+            android:textSize="35sp"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:textColor="@color/pink"
+            android:text="location"/>
+
+        <EditText
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:hint="Zip Code"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:textColor="@color/pink"
+            android:text="breed"/>
+
+        <Spinner
+            android:id="@+id/breed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:hint="select"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:textColor="@color/pink"
+            android:text="sex"/>
+
+        <Spinner
+            android:id="@+id/sex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:hint="select"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:textColor="@color/pink"
+            android:text="age"/>
+
+        <Spinner
+            android:id="@+id/age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:hint="select"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:textColor="@color/pink"
+            android:text="size"/>
+
+        <Spinner
+            android:id="@+id/size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:hint="select"/>
+
+        <Button
+            android:id="@+id/searchBTN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:text="search"
+            android:onClick="search"/>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

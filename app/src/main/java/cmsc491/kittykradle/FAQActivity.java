@@ -30,7 +30,7 @@ public class FAQActivity extends SidebarActivity {
             public void onClick(View v) {
                 searchTextDisplayed = !searchTextDisplayed;
                 if(searchTextDisplayed) {
-                    searchText.setText("You can begin your search by logging in and filling out the questionaire, which will help you find the perfect cat. Since kitty kradle is updated regularly, we recommend that you keep checking back or sign up for email alerts to be notified when new cats matching your search criteria are added to the site");
+                    searchText.setText("You can begin your search by logging in and filling out the questionnaire, which will help you find the perfect cat. Since Kitty Kradle is updated regularly, we recommend that you keep checking back or sign up for email alerts to be notified when new cats matching your search criteria are added to the site");
                 }
                 else {
                     searchText.setText("");
