@@ -111,6 +111,7 @@ public class SidebarActivity extends AppCompatActivity
 
             case R.id.favorites:
                 // Load favorites fragment
+                favorites();
                 break;
 
             case R.id.about:
@@ -141,6 +142,12 @@ public class SidebarActivity extends AppCompatActivity
     private void search()
     {
         Intent i = new Intent(this, SearchActivity.class);
+        startActivity(i);
+    }
+
+    // Go to favorites screen
+    private void favorites() {
+        Intent i = new Intent(this, FavoritesActivity.class);
         startActivity(i);
     }
 
