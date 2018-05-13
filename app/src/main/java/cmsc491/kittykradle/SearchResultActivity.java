@@ -1,10 +1,13 @@
 package cmsc491.kittykradle;
 
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -14,77 +17,66 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.util.LruCache;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class SearchResultActivity extends FragmentActivity implements View.OnClickListener,CatThumbnail.OnFragmentInteractionListener{
-    private final int catPerPage=8;
-    private int currentPage=1;
-    private LruCache<String, Bitmap> mMemoryCache;
+public class SearchResultActivity extends FragmentActivity implements View.OnClickListener,CatThumbnail.OnFragmentInteractionListener {
+    private final int catPerPage = 8;
+    private int currentPage = 1;
+    private SearchResultViewModel viewModel;
+    private Cat[] catsFound;
     private Button changeViewButton;
-    private CatThumbnail[] thumbnails = new CatThumbnail[8];
+    private Button prevPageButton;
+    private Button nextPageButton;
+    private TextView headerTextView;
+    private TextView pageTextView;
     private CatThumbnail selectedThumbnail;
-    private SearchResultGridView gridView;
-    private SearchResultListView listView;
     private String currentView;
-    final String GRID_VIEW="grid view";
-    final String LIST_VIEW="list view";
-//test data
-    private String[] imgUrls={
-            "http://oi1126.photobucket.com/albums/l606/kuochine/angel_zpskxewvgnw.jpg",
-            "http://i1126.photobucket.com/albums/l606/kuochine/wombat_zpszfcg8lm8.jpg",
-            "http://i1126.photobucket.com/albums/l606/kuochine/butters_zpsr0bl0mev.jpg",
-            "http://i1126.photobucket.com/albums/l606/kuochine/joey_zpsniyjhxov.jpeg",
-            "http://i1126.photobucket.com/albums/l606/kuochine/nando_zpsqtire7hv.jpg",
-            "http://i1126.photobucket.com/albums/l606/kuochine/cucumber_zpsnepyeosq.jpg",
-            "http://i1126.photobucket.com/albums/l606/kuochine/jasmine_zpslwaba5va.jpg",
-            "http://i1126.photobucket.com/albums/l606/kuochine/paisley_zpseh1v9saj.jpg"};
-    private String[] names={"angel","wombat","butter","joey","nando","cucumber","jasmine","paisley"};
-    private int[] ids={1,2,3,4,5,6,7,8};
-    private String[] genders={"male","female","male","female","male","female","male","female"};
+    final String GRID_VIEW = "grid view";
+    final String LIST_VIEW = "list view";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
+        viewModel = ViewModelProviders.of(this).get(SearchResultViewModel.class);
+        viewModel.QueryDatabase("00000","vyneko","female","21","small");
+        headerTextView=findViewById(R.id.header_message);
+        pageTextView=findViewById(R.id.page_text_view);
         changeViewButton = findViewById(R.id.change_view_button);
+        prevPageButton = findViewById(R.id.prev_button);
+        nextPageButton =  findViewById(R.id.next_button);
         changeViewButton.setOnClickListener(this);
+        prevPageButton.setOnClickListener(this);
+        nextPageButton.setOnClickListener(this);
 
-        RetainFragment retainFragment =
-                RetainFragment.findOrCreateRetainFragment(getSupportFragmentManager());
-        mMemoryCache = retainFragment.mRetainedCache;
-        if (mMemoryCache == null) {
-            final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
-            // Use 1/8th of the available memory for this memory cache.
-            final int cacheSize = maxMemory / 8;
-            mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {
-                @Override
-                protected int sizeOf(String key, Bitmap bitmap) {
-                    // The cache size will be measured in kilobytes rather than
-                    // number of items.
-                    return bitmap.getByteCount() / 1024;
+
+        viewModel.getSearchResult().observe(this, new Observer<Cat[]>() {
+            @Override
+            public void onChanged(@Nullable Cat[] cats) {
+                catsFound=cats;
+                if (cats == null) {
+                    //waiting for cats
+                    headerTextView.setText("Looking for cat...");
+                    return;
                 }
-            };
-            retainFragment.mRetainedCache = mMemoryCache;
-        }
-        for (int i = 0; i < thumbnails.length; i++) {
-            thumbnails[i] = new CatThumbnail();
-            thumbnails[i].setCat(ids[i],names[i],genders[i],imgUrls[i]);
-        }
+                if(cats.length==0){
+                    //no cat found
+                    headerTextView.setText("No cat found ):");
+                    return;
+                }
+                //cats are ready
+                headerTextView.setText("We found...");
+                changeViewButton.setVisibility(View.VISIBLE);
+                pageTextView.setVisibility(View.VISIBLE);
+                changeView(GRID_VIEW,1);
+            }
+        });
 
-        gridView = new SearchResultGridView();
-        gridView.setThumbnailFragments(thumbnails);
-        listView = new SearchResultListView();
-        listView.setThumbnailFragments(thumbnails);
-
-        if(savedInstanceState==null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container, gridView).commit();
-            currentView = "grid view";
-        }
 
     }
 
@@ -104,16 +96,36 @@ public class SearchResultActivity extends FragmentActivity implements View.OnCli
 
     }
 
-    private void changeView(){
-        switch (currentView){
-            case GRID_VIEW:
-                changeViewButton.setText(currentView);
+    private void changeView(String view, int page){
+        prevPageButton.setVisibility(View.VISIBLE);
+        nextPageButton.setVisibility(View.VISIBLE);
+        CatThumbnail[] thumbnails = new CatThumbnail[8];
+        for (int i = 0; i < thumbnails.length; i++) {
+            Cat cat = catsFound[i];
+            final CatThumbnail catThumbnail = new CatThumbnail();
+            catThumbnail.setCat(cat.getId(),cat.getName(),cat.getGender(),cat.getImgUrl());
+            viewModel.getImage(cat.getImgUrl()).observe(catThumbnail, new Observer<Bitmap>() {
+                @Override
+                public void onChanged(@Nullable Bitmap bitmap) {
+                    catThumbnail.setImage(bitmap);
+                }
+            });
+            thumbnails[i]=catThumbnail;
+        }
+
+        switch (view){
+            case LIST_VIEW:
+                changeViewButton.setText(GRID_VIEW);
+                SearchResultListView listView = new SearchResultListView();
+                listView.setThumbnailFragments(thumbnails);
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, listView).commit();
                 currentView=LIST_VIEW;
                 break;
-            case LIST_VIEW:
-                changeViewButton.setText(currentView);
+            case GRID_VIEW:
+                changeViewButton.setText(LIST_VIEW);
+                SearchResultGridView gridView = new SearchResultGridView();
+                gridView.setThumbnailFragments(thumbnails);
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, gridView).commit();
                 currentView = GRID_VIEW;
@@ -124,9 +136,6 @@ public class SearchResultActivity extends FragmentActivity implements View.OnCli
         selectedThumbnail=null;
     }
 
-    private void changeResultPage(int page){
-
-    }
 
     private void startCatInfoActivity(String catId){
         Intent intent = new Intent(getApplicationContext(), CatProfileActivity.class);
@@ -146,7 +155,12 @@ public class SearchResultActivity extends FragmentActivity implements View.OnCli
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.change_view_button:
-                changeView();
+                if(currentView==GRID_VIEW){
+                    changeView(LIST_VIEW,currentPage);
+                }
+                else{
+                    changeView(GRID_VIEW,currentPage);
+                }
                 break;
             default:
                 break;

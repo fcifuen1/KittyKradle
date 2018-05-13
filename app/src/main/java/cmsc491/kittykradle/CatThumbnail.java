@@ -1,5 +1,7 @@
 package cmsc491.kittykradle;
 
+import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -27,7 +29,6 @@ public class CatThumbnail extends Fragment implements View.OnClickListener, View
     private String catName;
     private String catGender;
     private String imageUrl;
-    private Bitmap imgBmp;
     private int textColor;
     private int selectedBg;
     OnFragmentInteractionListener mListener;
@@ -38,10 +39,10 @@ public class CatThumbnail extends Fragment implements View.OnClickListener, View
 
     public void setCat(int id, String name, String gender, String imageUrl){
         catId = id;
-        catName = name;
+        catName = gender;
         catGender=gender;
         this.imageUrl=imageUrl;
-        if(gender=="male") {
+        if(gender.equals("male")) {
             textColor = R.color.blue;
             selectedBg=R.drawable.text_border_male;
         }
@@ -51,14 +52,10 @@ public class CatThumbnail extends Fragment implements View.OnClickListener, View
         }
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
 
     public void setImage(Bitmap bmp){
-        imgBmp=bmp;
         ImageView imgview = getView().findViewById(R.id.imageView);
-        imgview.setImageBitmap(imgBmp);
+        imgview.setImageBitmap(bmp);
     }
 
     public void select(){
@@ -85,11 +82,13 @@ public class CatThumbnail extends Fragment implements View.OnClickListener, View
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cat_thumbnail, container, false);
+
         view.setOnTouchListener(this);
         TextView textView = (TextView) (view.findViewById(R.id.textView));
         textView.setText(catName);
         textView.setBackgroundResource(textColor);
-        new DownloadCatImageTask().execute(this);
+
+
         return view;
     }
 
@@ -126,39 +125,6 @@ public class CatThumbnail extends Fragment implements View.OnClickListener, View
     }
     public interface OnFragmentInteractionListener {
         void onThumbnailSelected(CatThumbnail ct);
-    }
-
-    private class DownloadCatImageTask extends AsyncTask<CatThumbnail, Void, Bitmap> {
-        CatThumbnail ct = null;
-
-        protected Bitmap doInBackground(CatThumbnail ... thumbnails) {
-            this.ct=thumbnails[0];
-            return download_Image(ct.getImageUrl());
-        }
-
-        protected void onPreExecute(){
-
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            ct.setImage(result);
-        }
-
-        private Bitmap download_Image(String url) {
-
-            Bitmap bmp =null;
-            try{
-                URL ulrn = new URL(url);
-                HttpURLConnection con = (HttpURLConnection)ulrn.openConnection();
-                InputStream is = con.getInputStream();
-                bmp = BitmapFactory.decodeStream(is);
-                if (null != bmp)
-                    return bmp;
-
-            }catch(Exception e){}
-            return bmp;
-        }
-
     }
 
 }
