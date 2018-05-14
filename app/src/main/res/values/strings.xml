@@ -5,7 +5,42 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="action_favorite">View favorites</string>
+
     <string name="action_settings">Settings</string>
+    <string name="title_activity_faq">FAQActivity</string>
+
+    <string-array name="options_breed">
+        <item>no preferences</item>
+        <item>shorthair</item>
+        <item>maine coon</item>
+        <item>munchkin</item>
+        <item>ragdoll</item>
+        <item>siamese</item>
+        <item>sphinx</item>
+        <item>persian</item>
+        <item>exotic</item>
+        <item>abyssinian</item>
+    </string-array>
+
+    <string-array name="options_sex">
+        <item>male</item>
+        <item>female</item>
+    </string-array>
+
+    <string-array name="options_age">
+        <item>0-1</item>
+        <item>2-3</item>
+        <item>4+</item>
+    </string-array>
+
+    <string-array name="options_size">
+        <item>no preferences</item>
+        <item>small</item>
+        <item>medium</item>
+        <item>large</item>
+    </string-array>
+    <string name="title_activity_contact">ContactActivity</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

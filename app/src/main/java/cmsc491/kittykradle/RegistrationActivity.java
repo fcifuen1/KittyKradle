@@ -4,11 +4,18 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -38,7 +45,8 @@ public class RegistrationActivity extends AppCompatActivity {
         toLogInBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                BackgroundTask task = new BackgroundTask();
+                task.execute(username.getText().toString(),password.getText().toString(),userEmail.getText().toString());
             }
         });
 
@@ -58,7 +66,7 @@ public class RegistrationActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             try{
-                url = new URL(urlLink);
+                url = new URL(urlLink + "/kittykradle/Registration.php");
                 conn = (HttpsURLConnection) url.openConnection();
                 conn.setReadTimeout(1000);
                 conn.setRequestMethod("POST");
@@ -67,10 +75,32 @@ public class RegistrationActivity extends AppCompatActivity {
                 conn.setDoOutput(true);
 
                 Uri.Builder builder = new Uri.Builder()
-                        .appendQueryParameter("userName",params[0])
+                        .appendQueryParameter("username",params[0])
                         .appendQueryParameter("password",params[1])
                         .appendQueryParameter("email",params[2]);
                 String query = builder.build().getEncodedQuery();
+                OutputStream outputpost = conn.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputpost, "UTF-8"));
+                writer.write(query);
+                writer.flush();
+                writer.close();
+                outputpost.close();
+                conn.connect();
+
+                int responseCode = conn.getResponseCode();
+                Log.d("Test" ,"Response Code: " + Integer.toString(responseCode));
+                if(responseCode == HttpsURLConnection.HTTP_OK){
+                    InputStream input = conn.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder result = new StringBuilder();
+                    String line;
+                    while((line = reader.readLine()) != null){
+                        result.append(line);
+                    }
+                    return(result.toString());
+                }else{
+                    return ("Bad Connection");
+                }
             }catch (Exception e){
                 e.printStackTrace();
             }

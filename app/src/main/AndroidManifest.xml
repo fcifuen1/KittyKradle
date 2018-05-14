@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cmsc491.kittykradle">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -24,8 +25,20 @@
             android:label="@string/title_activity_sidebar"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CatProfileActivity" />
-        <activity android:name=".RequestFormActivity"></activity>
-        <activity android:name=".SearchResultActivity"></activity>
+        <activity android:name=".SearchResultActivity" />
+        <activity android:name=".RequestFormActivity" />
+        <activity
+            android:name=".FAQActivity"
+            android:label="@string/title_activity_faq"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SearchActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ContactActivity"
+            android:label="@string/title_activity_contact"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".FavoritesActivity"></activity>
     </application>
 
 </manifest>

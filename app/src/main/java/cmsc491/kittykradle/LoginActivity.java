@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity
     Button successBTN, toRegisterBTN;
 
     //URL link to server-side
-    String urlLink = "https://c49deda6.ngrok.io";
+    String urlLink = "https://polar-harbor-98694.herokuapp.com";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -63,65 +63,66 @@ public class LoginActivity extends AppCompatActivity
     private void goToRegistration(){
         Intent intent = new Intent(this,RegistrationActivity.class);
         //Passing the link to other activities
-        intent.putExtra("link",urlLink);
+        intent.putExtra("link", urlLink);
         startActivity(intent);
     }
 
     private void signIn(){
         Intent i = new Intent(this, SidebarActivity.class);
+        i.putExtra("Username", username.getText().toString());
         startActivity(i);
     }
 
     private class BackgroundTask extends AsyncTask<String, String, String>{
 
-            HttpsURLConnection conn;
-            URL url = null;
+        HttpsURLConnection conn;
+        URL url = null;
 
-            @Override
-            protected void onPreExecute(){super.onPreExecute(); }
+        @Override
+        protected void onPreExecute(){super.onPreExecute(); }
 
-            //Grunt work to send data to the server-side
-            @Override
-            protected String doInBackground(String... params) {
-                try{
-                    url = new URL(urlLink + "something here too");
-                    conn = (HttpsURLConnection) url.openConnection();
-                    conn.setReadTimeout(1000);
-                    conn.setRequestMethod("POST");
+        //Grunt work to send data to the server-side
+        @Override
+        protected String doInBackground(String... params) {
+            try{
+                url = new URL(urlLink + "/kittykradle/LogIn.php");
+                conn = (HttpsURLConnection) url.openConnection();
+                conn.setReadTimeout(1000);
+                conn.setRequestMethod("POST");
 
-                    conn.setDoInput(true);
-                    conn.setDoOutput(true);
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
 
-                    Uri.Builder builder = new Uri.Builder()
-                            .appendQueryParameter("userName",params[0])
-                            .appendQueryParameter("password",params[1]);
-                    String query = builder.build().getEncodedQuery();
-                    OutputStream outputpost = conn.getOutputStream();
-                    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputpost, "UTF-8"));
-                    writer.write(query);
-                    writer.flush();
-                    writer.close();
-                    outputpost.close();
-                    conn.connect();
+                Uri.Builder builder = new Uri.Builder()
+                        .appendQueryParameter("username",params[0])
+                        .appendQueryParameter("password",params[1]);
+                String query = builder.build().getEncodedQuery();
+                OutputStream outputpost = conn.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputpost, "UTF-8"));
+                writer.write(query);
+                writer.flush();
+                writer.close();
+                outputpost.close();
+                conn.connect();
 
-                    int responseCode = conn.getResponseCode();
-                    if(responseCode == HttpsURLConnection.HTTP_OK){
-                        InputStream input = conn.getInputStream();
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-                        StringBuilder result = new StringBuilder();
-                        String line;
-                        while((line = reader.readLine()) != null){
-                            result.append(line);
-                        }
-                        return(result.toString());
-                    }else{
-                        return ("Bad Connection");
+                int responseCode = conn.getResponseCode();
+                if(responseCode == HttpsURLConnection.HTTP_OK){
+                    InputStream input = conn.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder result = new StringBuilder();
+                    String line;
+                    while((line = reader.readLine()) != null){
+                        result.append(line);
                     }
-                }catch (Exception e){
-                    e.printStackTrace();
+                    return(result.toString());
+                }else{
+                    return ("Bad Connection");
                 }
-                return null;
+            }catch (Exception e){
+                e.printStackTrace();
             }
+            return null;
+        }
         @Override
         protected void onProgressUpdate(String... values){
             super.onProgressUpdate(values);
