@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity
     Button successBTN, toRegisterBTN;
 
     //URL link to server-side
-    String urlLink = "https://46a82354.ngrok.io";
+    String urlLink = "https://8b674d79.ngrok.io";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

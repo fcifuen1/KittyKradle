@@ -96,6 +96,7 @@ public class SidebarActivity extends AppCompatActivity
         {
             case R.id.home:
                 // Load Home fragment
+                goHome();
                 break;
 
             case R.id.search:
@@ -124,6 +125,10 @@ public class SidebarActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    private void goHome(){
+        Intent i = new Intent(this, Homepage.class);
+        startActivity(i);
     }
 
     private void goToFaq()
