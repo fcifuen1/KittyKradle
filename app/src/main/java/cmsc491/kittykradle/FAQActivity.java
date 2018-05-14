@@ -23,8 +23,8 @@ public class FAQActivity extends SidebarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faq);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         final TextView searchText = findViewById(R.id.searchText);
         ImageButton searchButton = findViewById(R.id.searchButton);
