@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity
     Button successBTN, toRegisterBTN;
 
     //URL link to server-side
-    String urlLink = "https://polar-harbor-98694.herokuapp.com";
+    String urlLink = "https://4ac00a44.ngrok.io";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -47,9 +47,8 @@ public class LoginActivity extends AppCompatActivity
 
             @Override
             public void onClick(View view) {
-                //BackgroundTask task = new BackgroundTask();
-                //task.execute(username.getText().toString(),password.getText().toString());
-                signIn();
+                BackgroundTask task = new BackgroundTask();
+                task.execute(username.getText().toString(),password.getText().toString());
             }});
 
         toRegisterBTN.setOnClickListener(new View.OnClickListener() {

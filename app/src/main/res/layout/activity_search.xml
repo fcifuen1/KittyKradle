@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/yellow"
+    android:background="@color/white"
     tools:context="cmsc491.kittykradle.SearchActivity">
 
     <LinearLayout
@@ -12,115 +12,104 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginLeft="25sp"
-        android:layout_marginRight="25sp"
-        android:background="@color/white">
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp">
 
         <TextView
             android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40sp"
-            android:layout_marginLeft="25sp"
-            android:layout_marginRight="25sp"
+            android:padding="10dp"
             android:text="my dream cat is..."
             android:textColor="@color/blue"
-            android:textSize="35sp"
+            android:textSize="35dp"
             android:gravity="center"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25sp"
-            android:layout_marginRight="25sp"
-            android:textColor="@color/pink"
-            android:text="location"/>
+            android:layout_margin="10dp"
+            android:text="location"
+            android:textColor="@color/pink" />
 
         <EditText
             android:id="@+id/location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="25sp"
-            android:layout_marginRight="25sp"
-            android:hint="Zip Code"/>
+            android:layout_margin="10dp"
+            android:background="@drawable/roundedtextbox_greyborder"
+            android:hint="Zip Code"
+            android:padding="5dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25sp"
-            android:layout_marginRight="25sp"
+            android:layout_margin="10dp"
             android:textColor="@color/pink"
             android:text="breed"/>
 
         <Spinner
             android:id="@+id/breed"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="25sp"
-            android:layout_marginRight="25sp"
-            android:hint="select"/>
+            android:layout_height="37dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/roundedtextbox_greyborder"
+            android:hint="select"
+            android:padding="5dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25sp"
-            android:layout_marginRight="25sp"
+            android:layout_margin="10dp"
             android:textColor="@color/pink"
             android:text="sex"/>
 
         <Spinner
             android:id="@+id/sex"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="25sp"
-            android:layout_marginRight="25sp"
+            android:layout_height="37dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/roundedtextbox_greyborder"
             android:hint="select"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25sp"
-            android:layout_marginRight="25sp"
+            android:layout_margin="10dp"
             android:textColor="@color/pink"
             android:text="age"/>
 
         <Spinner
             android:id="@+id/age"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="25sp"
-            android:layout_marginRight="25sp"
+            android:layout_height="37dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/roundedtextbox_greyborder"
             android:hint="select"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25sp"
-            android:layout_marginRight="25sp"
+            android:layout_margin="10dp"
             android:textColor="@color/pink"
             android:text="size"/>
 
         <Spinner
             android:id="@+id/size"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="25sp"
-            android:layout_marginRight="25sp"
+            android:layout_height="37dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/roundedtextbox_greyborder"
             android:hint="select"/>
 
         <Button
             android:id="@+id/searchBTN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25sp"
-            android:layout_marginRight="25sp"
+            android:layout_margin="10dp"
             android:text="search"
-            android:background="@color/blue"
+            android:textColor="@color/white"
+            android:background="@drawable/bluebutton"
             android:onClick="search"/>
 
     </LinearLayout>

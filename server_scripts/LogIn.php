@@ -1,6 +1,6 @@
 <?php
-	if(isset($_POST['userName']) && isset($_POST['password'])){
-		$username = $_POST['userName'];
+	if(isset($_POST['username']) && isset($_POST['password'])){
+		$username = $_POST['username'];
 		$password = $_POST['password'];
 
 		//Database Connection variable
