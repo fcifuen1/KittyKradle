@@ -44,7 +44,6 @@ public class SearchResultActivity extends SidebarActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
-        super.onCreateDrawer();
 
         viewModel = ViewModelProviders.of(this).get(SearchResultViewModel.class);
         viewModel.QueryDatabase("00000","vy.neko","female","21","small");

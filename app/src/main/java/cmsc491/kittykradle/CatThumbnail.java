@@ -3,6 +3,7 @@ package cmsc491.kittykradle;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
@@ -84,6 +85,7 @@ public class CatThumbnail extends Fragment implements View.OnClickListener, View
         View view = inflater.inflate(R.layout.fragment_cat_thumbnail, container, false);
 
         view.setOnTouchListener(this);
+        view.setOnClickListener(this);
         TextView textView = (TextView) (view.findViewById(R.id.textView));
         textView.setText(catName);
         textView.setBackgroundResource(textColor);
@@ -121,7 +123,8 @@ public class CatThumbnail extends Fragment implements View.OnClickListener, View
 
     @Override
     public void onClick(View v) {
-
+        Intent intent = new Intent(getActivity(),CatProfileActivity.class);
+        startActivity(intent);
     }
     public interface OnFragmentInteractionListener {
         void onThumbnailSelected(CatThumbnail ct);
