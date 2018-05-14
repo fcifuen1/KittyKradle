@@ -11,14 +11,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-public class ContactActivity extends AppCompatActivity {
+public class ContactActivity extends SidebarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         Button linkButton = findViewById(R.id.linkButton);
         linkButton.setOnClickListener(new View.OnClickListener() {
