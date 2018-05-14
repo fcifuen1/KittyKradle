@@ -19,6 +19,8 @@ public class FAQActivity extends SidebarActivity {
     boolean adoptabilityTextDisplayed = false;
     boolean stateTextDisplayed = false;
 
+    Button contactBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,15 +103,17 @@ public class FAQActivity extends SidebarActivity {
             }
         });
 
-        ImageButton contactButton = findViewById(R.id.contactButton);
-        contactButton.setOnClickListener(new View.OnClickListener()  {
+        contactBtn = (Button) findViewById(R.id.contactButton);
+        contactBtn.setOnClickListener(new View.OnClickListener()  {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ContactActivity.class);
-                startActivity(intent);
+                toContact();
             }
         });
-
+    }
+    private void toContact(){
+        Intent intent = new Intent(this, ContactActivity.class);
+        startActivity(intent);
     }
 
 }

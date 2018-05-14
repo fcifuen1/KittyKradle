@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,27 +14,26 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            >
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
             <TextView
                 android:id="@+id/faqLabel"
                 android:text="faq."
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
                 android:textSize="30dp"
                 android:textColor="@color/pink"
-                />
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
 
             <!-- THE FIRST BUTTON, THE SEARCH BUTTON -->
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="10dp"
                 >
                 <TextView
@@ -43,20 +42,17 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:textSize="20dp"
-                    android:textColor="@color/blue"
-                    android:layout_marginLeft="20dp"
-                    />
+                    android:textColor="@color/blue" />
                 <ImageButton
                     android:id="@+id/searchButton"
-                    android:src="@drawable/arrow_grey_right"
-                    android:background="#0000"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginLeft="100dp"
                     android:adjustViewBounds="true"
+                    android:background="#0000"
                     android:scaleType="centerInside"
-                    />
-            </LinearLayout>
+                    android:src="@drawable/arrow_grey_right"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
             <TextView
                 android:id="@+id/searchText"
                 android:layout_width="wrap_content"
@@ -64,37 +60,31 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="100dp"
                 android:textSize="20dp"
-                android:textColor="@color/darkGray"
-                />
+                android:textColor="@color/darkGray" />
 
             <!-- THE SECOND BUTTON, THE ADOPT BUTTON -->
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
-                >
+                android:layout_marginTop="20dp">
                 <TextView
                     android:id="@+id/adoptQuestion"
                     android:text="How do I adopt a cat I see \non Kitty Kradle?"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:textSize="20dp"
-                    android:textColor="@color/blue"
-                    android:layout_marginLeft="20dp"
-                    />
+                    android:textColor="@color/blue"/>
                 <ImageButton
                     android:id="@+id/adoptButton"
                     android:src="@drawable/arrow_grey_right"
                     android:background="#0000"
-                    android:layout_width="wrap_content"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginLeft="90dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
-                    />
-            </LinearLayout>
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
             <TextView
                 android:id="@+id/adoptText"
                 android:layout_width="wrap_content"
@@ -107,32 +97,27 @@
 
             <!-- THE THIRD BUTTON, THE APPROVAL BUTTON -->
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
-                >
+                android:layout_marginTop="20dp">
                 <TextView
                     android:id="@+id/approvalQuestion"
                     android:text="How will I know if I've been \napproved to adopt a cat?"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:textSize="20dp"
-                    android:textColor="@color/blue"
-                    android:layout_marginLeft="20dp"
-                    />
+                    android:textColor="@color/blue"/>
                 <ImageButton
                     android:id="@+id/approvalButton"
                     android:src="@drawable/arrow_grey_right"
                     android:background="#0000"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginLeft="83dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
-                    />
-            </LinearLayout>
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
             <TextView
                 android:id="@+id/approvalText"
                 android:layout_width="wrap_content"
@@ -145,32 +130,27 @@
 
             <!-- THE FOURTH BUTTON, THE ADOPTABILITY QUESTION -->
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
-                >
+                android:layout_marginTop="20dp">
                 <TextView
                     android:id="@+id/adoptabilityQuestion"
                     android:text="Is the cat I see on Kitty \nKradle still adoptable?"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:textSize="20dp"
-                    android:textColor="@color/blue"
-                    android:layout_marginLeft="20dp"
-                    />
+                    android:textColor="@color/blue"/>
                 <ImageButton
                     android:id="@+id/adoptabilityButton"
                     android:src="@drawable/arrow_grey_right"
                     android:background="#0000"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginLeft="117dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
-                    />
-            </LinearLayout>
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
             <TextView
                 android:id="@+id/adoptabilityText"
                 android:layout_width="wrap_content"
@@ -183,32 +163,27 @@
 
             <!-- THE FIFTH BUTTON, THE STATE BUTTON -->
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
-                >
+                android:layout_marginTop="20dp">
                 <TextView
                     android:id="@+id/stateQuestion"
                     android:text="Can I adopt a cat who's \nout of state?"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:textSize="20dp"
-                    android:textColor="@color/blue"
-                    android:layout_marginLeft="20dp"
-                    />
+                    android:textColor="@color/blue"/>
                 <ImageButton
                     android:id="@+id/stateButton"
                     android:src="@drawable/arrow_grey_right"
                     android:background="#0000"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginLeft="115dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
-                    />
-            </LinearLayout>
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
             <TextView
                 android:id="@+id/stateText"
                 android:layout_width="wrap_content"
@@ -224,34 +199,26 @@
             <TextView
                 android:id="@+id/contactText"
                 android:text="any other questions?"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginRight="100dp"
                 android:textSize="20dp"
                 android:textColor="@color/darkGray"
-                />
-            <ImageButton
-                android:id="@+id/contactButton"
-                android:src="@drawable/contact_button_pink"
-                android:background="#0000"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginRight="100dp"
-                android:scaleX="2"
-                android:scaleY="2"
-                android:adjustViewBounds="true"
-                android:scaleType="centerInside"
-                />
-            <View
+                android:layout_marginBottom="10dp"/>
+            <Button
+                android:id="@+id/contactButton"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                />
+                android:layout_height="wrap_content"
+                android:text="contact us"
+                android:textAllCaps="false"
+                android:background="@drawable/pinkbutton"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:layout_marginBottom="20dp"/>
 
         </LinearLayout>
     </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

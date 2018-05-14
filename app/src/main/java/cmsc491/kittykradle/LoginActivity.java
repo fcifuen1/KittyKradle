@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +27,6 @@ public class LoginActivity extends AppCompatActivity
     EditText username, password;
     Button successBTN, toRegisterBTN;
 
-    //URL link to server-side
     String urlLink = "https://8b674d79.ngrok.io";
 
     @Override
@@ -130,6 +130,8 @@ public class LoginActivity extends AppCompatActivity
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
+
+            //Log.d("SQL","result is "+result);
 
             if(result.equalsIgnoreCase("success")){
                 signIn();

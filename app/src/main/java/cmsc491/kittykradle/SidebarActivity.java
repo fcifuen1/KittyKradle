@@ -17,6 +17,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.Set;
+
 public class SidebarActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
@@ -114,6 +116,10 @@ public class SidebarActivity extends AppCompatActivity
                 favorites();
                 break;
 
+            case R.id.settings:
+                settings();
+                break;
+
             case R.id.about:
                 // Load about fragment -- mission, faq, cat care
                 goToFaq();
@@ -163,7 +169,12 @@ public class SidebarActivity extends AppCompatActivity
             startActivity(i);
         }
     }
-
+    private void settings(){
+        if(this.getClass()!=Settings.class) {
+            Intent i = new Intent(this, Settings.class);
+            startActivity(i);
+        }
+    }
     // Clears the activity stack and goes back to the Login page
     private void logout()
     {
