@@ -23,6 +23,11 @@ public class SidebarActivity extends AppCompatActivity
     private DrawerLayout drawerLayout;
     private FragmentManager fm;
 
+    @Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+        onCreateDrawer();
+    }
 
     protected void onCreateDrawer()
     {
