@@ -29,7 +29,6 @@ function search($conn, $zipcode, $breed, $sex, $age, $size)
     $numSex = array_values(isExistSex($conn, $sex));
     $numAge = array_values(isExistAge($conn, $age));
     $numSize = array_values(isExistSize($conn, $size));
-    echo("<br>");
     
     $nums = array($numZip, $numBreed, $numSex, $numAge, $numSize);
     $maxNum = max($nums);       //Find search criteria with the most matches
@@ -41,10 +40,9 @@ function search($conn, $zipcode, $breed, $sex, $age, $size)
     if($numAge == null){$numAge = $maxNum;}
     if($numSize == null){$numSize = $maxNum;}
     
+
     //Compute intersection of matched criteria arrays 
     $searchResult = array_intersect($numZip, $numBreed, $numSex, $numAge, $numSize);
-    var_dump($searchResult); 
-    echo("<br>");
     
     //For debugging
     echo("<br>zipcode: ");
@@ -58,22 +56,38 @@ function search($conn, $zipcode, $breed, $sex, $age, $size)
     echo("<br>size: ");
     echo json_encode(array_values($numSize));
     echo("<br>");
-    
-    //Find and return breed, sex, age, size of search matches 
-    $query = "SELECT breed, sex, age, size FROM cat_detail WHERE cat_id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("i", $searchResult[1]);
-    $stmt->execute();
-    $stmt->store_result();
-    
-    $stmt->bind_result($breed, $sex, $age, $size);
-    $matches = array();
-    while($stmt->fetch()){
-        $matches[] = [$breed, $sex, $age, $size];
-    }
 
+    $matches1 = array();
+
+     //Find and return cat_id, name, sex, picture_url of search matches 
+    foreach($searchResult as $value) {
+        $query1 = "SELECT sex FROM cat_detail WHERE cat_id = ?";
+        $stmt1 = $conn->prepare($query1);
+        $stmt1->bind_param("i", $value);  
+        $stmt1->execute();
+        $stmt1->store_result();
+    
+        $stmt1->bind_result($sex);
+        $matches = array();
+        while($stmt1->fetch()){
+            $matches = array($value, $sex);
+        }
+
+        $query2 = "SELECT name, picture_url FROM cat_info WHERE cat_id = ?";
+        $stmt2 = $conn->prepare($query2);
+        $stmt2->bind_param("i", $value);  
+        $stmt2->execute();
+        $stmt2->store_result();
+    
+        $stmt2->bind_result($name, $picture_url);
+        while($stmt2->fetch()){
+            array_push($matches, $name, $picture_url);
+        }
+        array_push($matches1, $matches);
+
+    }
     echo("<br>");
-    echo json_encode($matches);
+    echo json_encode($matches1);
 }
 
 function isExistZip($cnn, $zipcode)
