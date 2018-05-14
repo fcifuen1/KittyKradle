@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Homepage extends AppCompatActivity {
+public class Homepage extends SidebarActivity {
 
     Button toSearch, toFaq;
 
