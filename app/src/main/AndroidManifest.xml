@@ -30,14 +30,14 @@
         <activity
             android:name=".FAQActivity"
             android:label="@string/title_activity_faq"
-            android:theme="@style/AppTheme.NoActionBar" />
+             />
         <activity
             android:name=".SearchActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            />
         <activity
             android:name=".ContactActivity"
             android:label="@string/title_activity_contact"
-            android:theme="@style/AppTheme.NoActionBar" />
+           />
         <activity android:name=".FavoritesActivity" />
         <activity android:name=".Homepage"></activity>
     </application>

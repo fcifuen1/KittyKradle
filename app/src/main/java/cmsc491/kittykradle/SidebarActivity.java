@@ -101,6 +101,7 @@ public class SidebarActivity extends AppCompatActivity
         {
             case R.id.home:
                 // Load Home fragment
+                homepage();
                 break;
 
             case R.id.search:
@@ -131,23 +132,36 @@ public class SidebarActivity extends AppCompatActivity
         return true;
     }
 
+    private void homepage() {
+        if(this.getClass()!=Homepage.class) {
+            Intent i = new Intent(this, Homepage.class);
+            startActivity(i);
+        }
+    }
+
     private void goToFaq()
     {
-        Intent i = new Intent(this, FAQActivity.class);
-        startActivity(i);
+        if(this.getClass()!=FAQActivity.class) {
+            Intent i = new Intent(this, FAQActivity.class);
+            startActivity(i);
+        }
     }
 
     // Goes to the search screen
     private void search()
     {
-        Intent i = new Intent(this, SearchActivity.class);
-        startActivity(i);
+        if(this.getClass()!=SearchActivity.class) {
+            Intent i = new Intent(this, SearchActivity.class);
+            startActivity(i);
+        }
     }
 
     // Go to favorites screen
     private void favorites() {
-        Intent i = new Intent(this, FavoritesActivity.class);
-        startActivity(i);
+        if(this.getClass()!=FavoritesActivity.class) {
+            Intent i = new Intent(this, FavoritesActivity.class);
+            startActivity(i);
+        }
     }
 
     // Clears the activity stack and goes back to the Login page
