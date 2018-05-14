@@ -39,7 +39,7 @@ public class CatThumbnail extends Fragment implements View.OnClickListener, View
 
     public void setCat(int id, String name, String gender, String imageUrl){
         catId = id;
-        catName = gender;
+        catName = name;
         catGender=gender;
         this.imageUrl=imageUrl;
         if(gender.equals("male")) {

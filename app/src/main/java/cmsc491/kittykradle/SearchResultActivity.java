@@ -25,8 +25,8 @@ import java.net.URL;
 
 
 public class SearchResultActivity extends FragmentActivity implements View.OnClickListener,CatThumbnail.OnFragmentInteractionListener {
-    private final int catPerPage = 8;
-    private int currentPage = 1;
+    private final int catsPerPage = 8; //don't change this until you implement dynamic layout for result view
+    private int currentPage;
     private SearchResultViewModel viewModel;
     private Cat[] catsFound;
     private Button changeViewButton;
@@ -35,16 +35,17 @@ public class SearchResultActivity extends FragmentActivity implements View.OnCli
     private TextView headerTextView;
     private TextView pageTextView;
     private CatThumbnail selectedThumbnail;
-    private String currentView;
     final String GRID_VIEW = "grid view";
     final String LIST_VIEW = "list view";
+    private String currentView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
         viewModel = ViewModelProviders.of(this).get(SearchResultViewModel.class);
-        viewModel.QueryDatabase("00000","vyneko","female","21","small");
+        viewModel.QueryDatabase("00000","vy.neko","female","21","small");
         headerTextView=findViewById(R.id.header_message);
         pageTextView=findViewById(R.id.page_text_view);
         changeViewButton = findViewById(R.id.change_view_button);
@@ -53,7 +54,10 @@ public class SearchResultActivity extends FragmentActivity implements View.OnCli
         changeViewButton.setOnClickListener(this);
         prevPageButton.setOnClickListener(this);
         nextPageButton.setOnClickListener(this);
-
+        if(savedInstanceState==null){
+            currentView=GRID_VIEW;
+            currentPage=1;
+        }
 
         viewModel.getSearchResult().observe(this, new Observer<Cat[]>() {
             @Override
@@ -73,7 +77,7 @@ public class SearchResultActivity extends FragmentActivity implements View.OnCli
                 headerTextView.setText("We found...");
                 changeViewButton.setVisibility(View.VISIBLE);
                 pageTextView.setVisibility(View.VISIBLE);
-                changeView(GRID_VIEW,1);
+                changeView(currentView,currentPage);
             }
         });
 
@@ -83,25 +87,28 @@ public class SearchResultActivity extends FragmentActivity implements View.OnCli
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-
         savedInstanceState.putString("VIEW", currentView);
-
+        savedInstanceState.putInt("PAGE",currentPage);
     }
 
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-
         currentView = savedInstanceState.getString("VIEW");
-
+        currentPage = savedInstanceState.getInt("PAGE");
     }
 
     private void changeView(String view, int page){
-        prevPageButton.setVisibility(View.VISIBLE);
-        nextPageButton.setVisibility(View.VISIBLE);
-        CatThumbnail[] thumbnails = new CatThumbnail[8];
+
+        int firstCatIndex=catsPerPage*(page-1);
+        if(firstCatIndex>=catsFound.length||page<=0){
+            return;
+        }
+        int numberOfCats=(catsFound.length-firstCatIndex)>=catsPerPage?catsPerPage:catsFound.length%catsPerPage;
+
+        CatThumbnail[] thumbnails = new CatThumbnail[numberOfCats];
         for (int i = 0; i < thumbnails.length; i++) {
-            Cat cat = catsFound[i];
+            Cat cat = catsFound[firstCatIndex+i];
             final CatThumbnail catThumbnail = new CatThumbnail();
             catThumbnail.setCat(cat.getId(),cat.getName(),cat.getGender(),cat.getImgUrl());
             viewModel.getImage(cat.getImgUrl()).observe(catThumbnail, new Observer<Bitmap>() {
@@ -134,6 +141,16 @@ public class SearchResultActivity extends FragmentActivity implements View.OnCli
                 break;
         }
         selectedThumbnail=null;
+        if(page>1)
+            prevPageButton.setVisibility(View.VISIBLE);
+        else
+            prevPageButton.setVisibility(View.INVISIBLE);
+        if(page<(catsFound.length+catsPerPage-1)/catsPerPage)
+            nextPageButton.setVisibility(View.VISIBLE);
+        else
+            nextPageButton.setVisibility(View.INVISIBLE);
+        currentPage=page;
+        pageTextView.setText(Integer.toString(page));
     }
 
 
@@ -161,6 +178,12 @@ public class SearchResultActivity extends FragmentActivity implements View.OnCli
                 else{
                     changeView(GRID_VIEW,currentPage);
                 }
+                break;
+            case R.id.prev_button:
+                changeView(currentView,Math.max(1,currentPage-1));
+                break;
+            case R.id.next_button:
+                changeView(currentView,Math.min(currentPage+1,(catsFound.length+catsPerPage-1)/catsPerPage));
                 break;
             default:
                 break;
