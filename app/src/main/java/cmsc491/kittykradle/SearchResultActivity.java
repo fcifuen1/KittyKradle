@@ -24,7 +24,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class SearchResultActivity extends FragmentActivity implements View.OnClickListener,CatThumbnail.OnFragmentInteractionListener {
+public class SearchResultActivity extends SidebarActivity implements View.OnClickListener,CatThumbnail.OnFragmentInteractionListener {
     private final int catsPerPage = 8; //don't change this until you implement dynamic layout for result view
     private int currentPage;
     private SearchResultViewModel viewModel;
@@ -44,6 +44,8 @@ public class SearchResultActivity extends FragmentActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
+        super.onCreateDrawer();
+
         viewModel = ViewModelProviders.of(this).get(SearchResultViewModel.class);
         viewModel.QueryDatabase("00000","vy.neko","female","21","small");
         headerTextView=findViewById(R.id.header_message);
