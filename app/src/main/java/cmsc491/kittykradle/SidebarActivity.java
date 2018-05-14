@@ -23,15 +23,15 @@ public class SidebarActivity extends AppCompatActivity
     private DrawerLayout drawerLayout;
     private FragmentManager fm;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
+
+    protected void onCreateDrawer()
     {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sidebar);
+        //super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_sidebar);
 
         // toolbar is the menu button at the top left of the screen
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
 
         // Set up menu bar at top corner
         ActionBar actionbar = getSupportActionBar();
@@ -41,14 +41,8 @@ public class SidebarActivity extends AppCompatActivity
         drawerLayout = findViewById(R.id.drawer_layout);
         fm = getSupportFragmentManager();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
+
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
