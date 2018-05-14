@@ -19,6 +19,14 @@ $sex = $_GET["sex"];
 $age = $_GET["age"];
 $size = $_GET["size"];
 
+//For debugging
+printf("user searched zipcode: %s <br>", $zipcode);
+printf("user searched breed: %s <br>", $breed);
+printf("user searched sex: %s <br>", $sex);
+printf("user searched age: %s <br>", $age);
+printf("user searched size: %s <br>", $size);
+echo("<br>");
+
 search($conn, $zipcode, $breed, $sex, $age, $size);
 
 function search($conn, $zipcode, $breed, $sex, $age, $size)
@@ -31,36 +39,39 @@ function search($conn, $zipcode, $breed, $sex, $age, $size)
     $numSize = array_values(isExistSize($conn, $size));
     
     $nums = array($numZip, $numBreed, $numSex, $numAge, $numSize);
-    $maxNum = max($nums);       //Find search criteria with the most matches
+    //Find search criteria with the most matches
+    $maxNum = max($nums);       
     
-    //If a search criteria was left blank, fill with criteria with most matches
+    //If a search criteria was left blank, it's results are replaced by the highest match count criteria's results
     if($numZip == null){$numZip = $maxNum;}
     if($numBreed == null){$numBreed = $maxNum;}
     if($numSex == null){$numSex = $maxNum;}
     if($numAge == null){$numAge = $maxNum;}
     if($numSize == null){$numSize = $maxNum;}
     
-
     //Compute intersection of matched criteria arrays 
     $searchResult = array_intersect($numZip, $numBreed, $numSex, $numAge, $numSize);
     
     //For debugging
-    echo("<br>zipcode: ");
+    echo("<br>cat_ids matching zipcode: ");
     echo json_encode(array_values($numZip));
-    echo("<br>breed: ");
+    echo("<br>cat_ids matching breed: ");
     echo json_encode(array_values($numBreed));
-    echo("<br>sex: ");
+    echo("<br>cat_ids matching sex: ");
     echo json_encode(array_values($numSex));
-    echo("<br> age: ");
+    echo("<br>cat_ids matching age: ");
     echo json_encode(array_values($numAge));
-    echo("<br>size: ");
+    echo("<br>cat_ids matching size: ");
     echo json_encode(array_values($numSize));
+    echo("<br>");
+    echo("NOTE: any criteria that didn't return any matches is replaced by the highest match count criteria's results");
     echo("<br>");
 
     $matches1 = array();
 
-     //Find and return cat_id, name, sex, picture_url of search matches 
+     //Loop through cat_ids retrieved from array intersection
     foreach($searchResult as $value) {
+        //Retrieve sex of cat_id matches 
         $query1 = "SELECT sex FROM cat_detail WHERE cat_id = ?";
         $stmt1 = $conn->prepare($query1);
         $stmt1->bind_param("i", $value);  
@@ -70,9 +81,11 @@ function search($conn, $zipcode, $breed, $sex, $age, $size)
         $stmt1->bind_result($sex);
         $matches = array();
         while($stmt1->fetch()){
+            //Push matching sex criteria to first array
             $matches = array($value, $sex);
         }
 
+        //Retrieve name and picture_url of cat_id matches
         $query2 = "SELECT name, picture_url FROM cat_info WHERE cat_id = ?";
         $stmt2 = $conn->prepare($query2);
         $stmt2->bind_param("i", $value);  
@@ -81,15 +94,19 @@ function search($conn, $zipcode, $breed, $sex, $age, $size)
     
         $stmt2->bind_result($name, $picture_url);
         while($stmt2->fetch()){
+            //Push matching name and picture_url criteria to second array
             array_push($matches, $name, $picture_url);
         }
+        //Combine cat_detail and cat_info query results arrays
         array_push($matches1, $matches);
 
     }
     echo("<br>");
+    //Return json representation of matches array
     echo json_encode($matches1);
 }
 
+//Returns array of cat_ids with matching zipcode
 function isExistZip($cnn, $zipcode)
 {
 	$query = "SELECT cat_id FROM cat_info WHERE zipcode = ?";
@@ -99,7 +116,7 @@ function isExistZip($cnn, $zipcode)
     $stmt->store_result();
     $rowcount = $stmt->num_rows;
     //For debugging
-    printf("Results matching zipcode %s:    %d <br>", $zipcode, $rowcount);
+    printf("number of cats in zipcode %s:    %d <br>", $zipcode, $rowcount);
 
     $stmt->bind_result($cat_id);
     $matches = array();
@@ -111,6 +128,7 @@ function isExistZip($cnn, $zipcode)
 	return $matches;
 }
 
+//Returns array of cat_ids with matching breed
 function isExistBreed($cnn, $breed)
 {
 	$query = "SELECT cat_id FROM cat_detail WHERE breed = ?";
@@ -120,7 +138,7 @@ function isExistBreed($cnn, $breed)
     $stmt->store_result();
     $rowcount = $stmt->num_rows;
     //For debugging
-    printf("Results matching breed %s:    %d <br>", $breed, $rowcount);
+    printf("number of cats with breed %s:    %d <br>", $breed, $rowcount);
 
     $stmt->bind_result($cat_id);
     $matches = array();
@@ -132,6 +150,7 @@ function isExistBreed($cnn, $breed)
 	return $matches;
 }
 
+//Returns array of cat_ids with matching sex
 function isExistSex($cnn, $sex)
 {
 	$query = "SELECT cat_id FROM cat_detail WHERE sex = ?";
@@ -141,7 +160,7 @@ function isExistSex($cnn, $sex)
     $stmt->store_result();
     $rowcount = $stmt->num_rows;
     //For debugging
-    printf("Results matching sex %s:    %d <br>", $sex, $rowcount);
+    printf("number of cats with sex %s:    %d <br>", $sex, $rowcount);
 
     $stmt->bind_result($cat_id);
     $matches = array();
@@ -153,6 +172,7 @@ function isExistSex($cnn, $sex)
 	return $matches;
 }
 
+//Returns array of cat_ids with matching age
 function isExistAge($cnn, $age)
 {
 	$query = "SELECT cat_id FROM cat_detail WHERE age = ?";
@@ -162,7 +182,7 @@ function isExistAge($cnn, $age)
     $stmt->store_result();
     $rowcount = $stmt->num_rows;
     //For debugging
-    printf("Results matching age %s:    %d <br>", $age, $rowcount);
+    printf("number of cats with age %s:    %d <br>", $age, $rowcount);
 
     $stmt->bind_result($cat_id);
     $matches = array();
@@ -174,6 +194,7 @@ function isExistAge($cnn, $age)
 	return $matches;
 }
 
+//Returns array of cat_ids with matching size
 function isExistSize($cnn, $size)
 {
 	$query = "SELECT cat_id FROM cat_detail WHERE size = ?";
@@ -183,7 +204,7 @@ function isExistSize($cnn, $size)
     $stmt->store_result();
     $rowcount = $stmt->num_rows;
     //For debugging
-    printf("Results matching size %s:    %d <br>", $size, $rowcount);
+    printf("number of cats of size %s:    %d <br>", $size, $rowcount);
 
     $stmt->bind_result($cat_id);
     $matches = array();
