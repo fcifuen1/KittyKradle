@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ public class SearchActivity extends SidebarActivity
     private TextView header;
     private EditText location;
     private Spinner breed, sex, age, size;
+    Button searchBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,7 +32,7 @@ public class SearchActivity extends SidebarActivity
         sex = (Spinner) findViewById(R.id.sex);
         age = (Spinner) findViewById(R.id.age);
         size = (Spinner) findViewById(R.id.size);
-
+        searchBtn = (Button) findViewById(R.id.searchBTN);
         // Set the header to open sans font
         //header.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/opansans.ttf"));
 
@@ -57,9 +59,16 @@ public class SearchActivity extends SidebarActivity
                 ArrayAdapter.createFromResource(this, R.array.options_size, android.R.layout.simple_spinner_item);
         options_size.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         size.setAdapter(options_size);
+
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                search();
+            }
+        });
     }
 
-    private void search(View view)
+    private void search()
     {
         Intent i = new Intent(this, SearchResultActivity.class);
         Bundle bundle = new Bundle();

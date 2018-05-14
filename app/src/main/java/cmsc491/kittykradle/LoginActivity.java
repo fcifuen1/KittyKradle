@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity
     Button successBTN, toRegisterBTN;
 
     //URL link to server-side
-    String urlLink = "https://4ac00a44.ngrok.io";
+    String urlLink = "https://46a82354.ngrok.io";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity
     }
 
     private void signIn(){
-        Intent i = new Intent(this, SidebarActivity.class);
+        Intent i = new Intent(this, Homepage.class);
         i.putExtra("Username", username.getText().toString());
         startActivity(i);
     }

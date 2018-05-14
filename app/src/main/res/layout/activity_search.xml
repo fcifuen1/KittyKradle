@@ -109,8 +109,7 @@
             android:layout_margin="10dp"
             android:text="search"
             android:textColor="@color/white"
-            android:background="@drawable/bluebutton"
-            android:onClick="search"/>
+            android:background="@drawable/bluebutton" />
 
     </LinearLayout>
 
