@@ -40,7 +40,7 @@
                 android:id="@+id/tofaqBTN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="faq"
+                android:text="f.a.q."
                 android:textSize="20dp"
                 android:textAllCaps="false"
                 android:background="@drawable/bluebutton"

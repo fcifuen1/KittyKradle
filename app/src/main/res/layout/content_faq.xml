@@ -21,7 +21,7 @@
 
             <TextView
                 android:id="@+id/faqLabel"
-                android:text="faq."
+                android:text="f.a.q."
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
