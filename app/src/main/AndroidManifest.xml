@@ -39,8 +39,7 @@
         <activity android:name=".Settings" />
         <activity
             android:name=".CatCareActivity"
-            android:label="@string/title_activity_cat_care"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="@string/title_activity_cat_care"/>
     </application>
 
 </manifest>
