@@ -36,7 +36,11 @@
             android:label="@string/title_activity_contact" />
         <activity android:name=".FavoritesActivity" />
         <activity android:name=".Homepage" />
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".Settings" />
+        <activity
+            android:name=".CatCareActivity"
+            android:label="@string/title_activity_cat_care"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
