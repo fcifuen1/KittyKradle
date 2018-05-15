@@ -27,6 +27,7 @@ public class FAQActivity extends SidebarActivity {
         setContentView(R.layout.activity_faq);
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Kitty Kradle");
 
         final TextView searchText = findViewById(R.id.searchText);
         ImageButton searchButton = findViewById(R.id.searchButton);
