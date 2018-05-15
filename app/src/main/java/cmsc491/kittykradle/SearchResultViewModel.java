@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.util.LruCache;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
@@ -35,8 +36,16 @@ public class SearchResultViewModel extends ViewModel {
     private LruCache<String, LiveData<Bitmap>> imageCache= new LruCache<String, LiveData<Bitmap>>(24) { };
 
 
-    public void QueryDatabase(String zipcode, String breed, String sex, String age, String size){
-        new QueryServerTask().execute(new Query(zipcode, breed, sex, age, size));
+    public void QueryDatabase(String zipcode, String breed, String sex, String minAge, String maxAge, String size){
+        zipcode=(zipcode==null||zipcode.isEmpty())?"null":zipcode;
+        breed=(breed==null||breed.isEmpty())?"null":breed;
+        sex=(sex==null||sex.isEmpty())?"null":sex;
+        minAge=(minAge==null||minAge.isEmpty())?"null":minAge;
+        maxAge=(maxAge==null||maxAge.isEmpty())?"null":maxAge;
+        size=(size==null||size.isEmpty())?"null":size;
+
+        new QueryServerTask().execute(new Query(zipcode, breed, sex, minAge, maxAge, size));
+        Log.d("kue",zipcode+" "+breed+" "+sex+" "+minAge+" "+maxAge+" "+size);
     }
 
     public LiveData<Cat[]> getSearchResult(){
@@ -94,13 +103,15 @@ public class SearchResultViewModel extends ViewModel {
         final String zipcode;
         final String breed;
         final String sex;
-        final String age;
+        final String minAge;
+        final String maxAge;
         final String size;
-        public Query(String zipcode, String breed, String sex, String age, String size){
+        public Query(String zipcode, String breed, String sex, String minAge, String maxAge, String size){
             this.zipcode=zipcode;
             this.breed=breed;
             this.sex=sex;
-            this.age=age;
+            this.minAge=minAge;
+            this.maxAge=maxAge;
             this.size=size;
         }
     }
@@ -108,14 +119,14 @@ public class SearchResultViewModel extends ViewModel {
     private class QueryServerTask extends AsyncTask<Query, String, String>{
         HttpsURLConnection conn;
         URL url = null;
-        String urlLink = "???? !!!???";
+        String urlLink = "https://ff77f6e9.ngrok.io";
 
         @Override
         protected String doInBackground(Query... params) {
             Query query=params[0];
-            return "[{\"id\":0,\"name\":\"Angel\",\"gender\":\"male\",\"imgUrl\":\"http://oi1126.photobucket.com/albums/l606/kuochine/angel_zpskxewvgnw.jpg\"},{\"id\":1,\"name\":\"Wombat\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/wombat_zpszfcg8lm8.jpg\"},{\"id\":2,\"name\":\"Butter\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/butters_zpsr0bl0mev.jpg\"},{\"id\":3,\"name\":\"Joey\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/joey_zpsniyjhxov.jpeg\"},{\"id\":4,\"name\":\"Nando\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/nando_zpsqtire7hv.jpg\"},{\"id\":5,\"name\":\"Cucumber\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/cucumber_zpsnepyeosq.jpg\"},{\"id\":6,\"name\":\"Jasmine\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/jasmine_zpslwaba5va.jpg\"},{\"id\":7,\"name\":\"Paisley\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/paisley_zpseh1v9saj.jpg\"},{\"id\":1,\"name\":\"Wombat\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/wombat_zpszfcg8lm8.jpg\"},{\"id\":2,\"name\":\"Butter\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/butters_zpsr0bl0mev.jpg\"},{\"id\":3,\"name\":\"Joey\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/joey_zpsniyjhxov.jpeg\"},{\"id\":4,\"name\":\"Nando\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/nando_zpsqtire7hv.jpg\"},{\"id\":5,\"name\":\"Cucumber\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/cucumber_zpsnepyeosq.jpg\"},{\"id\":6,\"name\":\"Jasmine\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/jasmine_zpslwaba5va.jpg\"},{\"id\":7,\"name\":\"Paisley\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/paisley_zpseh1v9saj.jpg\"}]";
+            //return "[{\"id\":0,\"name\":\"Angel\",\"gender\":\"male\",\"imgUrl\":\"http://oi1126.photobucket.com/albums/l606/kuochine/angel_zpskxewvgnw.jpg\"},{\"id\":1,\"name\":\"Wombat\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/wombat_zpszfcg8lm8.jpg\"},{\"id\":2,\"name\":\"Butter\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/butters_zpsr0bl0mev.jpg\"},{\"id\":3,\"name\":\"Joey\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/joey_zpsniyjhxov.jpeg\"},{\"id\":4,\"name\":\"Nando\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/nando_zpsqtire7hv.jpg\"},{\"id\":5,\"name\":\"Cucumber\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/cucumber_zpsnepyeosq.jpg\"},{\"id\":6,\"name\":\"Jasmine\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/jasmine_zpslwaba5va.jpg\"},{\"id\":7,\"name\":\"Paisley\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/paisley_zpseh1v9saj.jpg\"},{\"id\":1,\"name\":\"Wombat\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/wombat_zpszfcg8lm8.jpg\"},{\"id\":2,\"name\":\"Butter\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/butters_zpsr0bl0mev.jpg\"},{\"id\":3,\"name\":\"Joey\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/joey_zpsniyjhxov.jpeg\"},{\"id\":4,\"name\":\"Nando\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/nando_zpsqtire7hv.jpg\"},{\"id\":5,\"name\":\"Cucumber\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/cucumber_zpsnepyeosq.jpg\"},{\"id\":6,\"name\":\"Jasmine\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/jasmine_zpslwaba5va.jpg\"},{\"id\":7,\"name\":\"Paisley\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/paisley_zpseh1v9saj.jpg\"}]";
             //return "[{\"id\":0,\"name\":\"Angel\",\"gender\":\"male\",\"imgUrl\":\"http://oi1126.photobucket.com/albums/l606/kuochine/angel_zpskxewvgnw.jpg\"},{\"id\":1,\"name\":\"Wombat\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/wombat_zpszfcg8lm8.jpg\"},{\"id\":2,\"name\":\"Butter\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/butters_zpsr0bl0mev.jpg\"},{\"id\":3,\"name\":\"Joey\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/joey_zpsniyjhxov.jpeg\"},{\"id\":4,\"name\":\"Nando\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/nando_zpsqtire7hv.jpg\"},{\"id\":5,\"name\":\"Cucumber\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/cucumber_zpsnepyeosq.jpg\"},{\"id\":6,\"name\":\"Jasmine\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/jasmine_zpslwaba5va.jpg\"},{\"id\":7,\"name\":\"Paisley\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/paisley_zpseh1v9saj.jpg\"}]";
-            /*
+
             try{
                 url = new URL(urlLink + "/kittykradle/Search.php");
                 conn = (HttpsURLConnection) url.openConnection();
@@ -129,9 +140,11 @@ public class SearchResultViewModel extends ViewModel {
                         .appendQueryParameter("zipcode",query.zipcode)
                         .appendQueryParameter("breed",query.breed)
                         .appendQueryParameter("sex",query.sex)
-                        .appendQueryParameter("age",query.age)
+                        .appendQueryParameter("minAge",query.minAge)
+                        .appendQueryParameter("maxAge",query.maxAge)
                         .appendQueryParameter("size",query.size);
                 String encodedQuery = builder.build().getEncodedQuery();
+                Log.d("kue",encodedQuery);
                 OutputStream outputpost = conn.getOutputStream();
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputpost, "UTF-8"));
                 writer.write(encodedQuery);
@@ -157,11 +170,12 @@ public class SearchResultViewModel extends ViewModel {
                 e.printStackTrace();
             }
             return null;
-            */
+
         }
 
         @Override
         protected void onPostExecute(String result) {
+            Log.d("kue",result);
             Gson gson = new Gson();
             JsonReader reader = new JsonReader(new StringReader(result));
             reader.setLenient(true);

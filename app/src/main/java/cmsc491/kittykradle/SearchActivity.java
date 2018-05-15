@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 public class SearchActivity extends SidebarActivity
 {
-    private TextView header;
+    private TextView header, minAge, maxAge;
     private EditText location;
     private Spinner breed, sex, age, size;
     Button searchBtn;
@@ -30,7 +30,8 @@ public class SearchActivity extends SidebarActivity
         location = (EditText) findViewById(R.id.location);
         breed = (Spinner) findViewById(R.id.breed);
         sex = (Spinner) findViewById(R.id.sex);
-        age = (Spinner) findViewById(R.id.age);
+        minAge= findViewById(R.id.min_age);
+        maxAge=findViewById(R.id.max_age);
         size = (Spinner) findViewById(R.id.size);
         searchBtn = (Button) findViewById(R.id.searchBTN);
         // Set the header to open sans font
@@ -49,10 +50,7 @@ public class SearchActivity extends SidebarActivity
         sex.setAdapter(options_sex);
 
         // Set options for age
-        ArrayAdapter<CharSequence> options_age =
-                ArrayAdapter.createFromResource(this, R.array.options_age, android.R.layout.simple_spinner_item);
-        options_age.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        age.setAdapter(options_age);
+
 
         // Set options for size
         ArrayAdapter<CharSequence> options_size =
@@ -73,10 +71,18 @@ public class SearchActivity extends SidebarActivity
         Intent i = new Intent(this, SearchResultActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("zipcode", location.getText().toString());
-        bundle.putString("breed", breed.getSelectedItem().toString());
-        bundle.putString("sex", sex.getSelectedItem().toString());
-        bundle.putString("age", age.getSelectedItem().toString());
-        bundle.putString("size", size.getSelectedItem().toString());
+        if(breed.getSelectedItemPosition()>0){
+            bundle.putString("breed", breed.getSelectedItem().toString());
+        }
+        if(sex.getSelectedItemPosition()>0){
+            bundle.putString("sex", sex.getSelectedItem().toString());
+        }
+        bundle.putString("minAge", minAge.getText().toString());
+        bundle.putString("maxAge", maxAge.getText().toString());
+        if(size.getSelectedItemPosition()>0) {
+            bundle.putString("size", size.getSelectedItem().toString());
+        }
+        i.putExtras(bundle);
         startActivity(i);
     }
 }

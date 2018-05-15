@@ -10,7 +10,7 @@
     tools:openDrawer="start">
 
     <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
-    <FrameLayout
+    <ScrollView
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -27,11 +27,11 @@
             android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:padding="10dp"
             android:text="my dream cat is..."
             android:textColor="@color/blue"
-            android:textSize="35dp"
-            android:gravity="center"/>
+            android:textSize="35dp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -46,6 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/roundedtextbox_greyborder"
+            android:inputType="number"
             android:hint="Zip Code"
             android:padding="5dp" />
 
@@ -87,13 +88,38 @@
             android:textColor="@color/pink"
             android:text="age"/>
 
-        <Spinner
-            android:id="@+id/age"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="37dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/roundedtextbox_greyborder"
-            android:hint="select"/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/min_age"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_margin="10dp"
+                android:layout_marginRight="50dp"
+
+                android:layout_weight="1"
+                android:background="@drawable/roundedtextbox_greyborder"
+                android:ems="10"
+                android:hint="minimum"
+                android:inputType="number"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/max_age"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_margin="10dp"
+                android:layout_marginRight="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundedtextbox_greyborder"
+                android:ems="10"
+                android:hint="maximum"
+                android:inputType="number"
+                android:textAlignment="center" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -120,7 +146,7 @@
             android:background="@drawable/bluebutton" />
 
     </LinearLayout>
-    </FrameLayout>
+    </ScrollView>
 
 
     <!-- Container for contents of the sidebar -->
@@ -130,6 +156,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        android:visibility="gone"
         app:headerLayout="@layout/nav_header_sidebar"
         app:menu="@menu/activity_sidebar_drawer" />
 

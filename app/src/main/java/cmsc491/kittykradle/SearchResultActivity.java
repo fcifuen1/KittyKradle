@@ -46,7 +46,6 @@ public class SearchResultActivity extends SidebarActivity implements View.OnClic
         setContentView(R.layout.activity_search_result);
 
         viewModel = ViewModelProviders.of(this).get(SearchResultViewModel.class);
-        viewModel.QueryDatabase("00000","vy.neko","female","21","small");
         headerTextView=findViewById(R.id.header_message);
         pageTextView=findViewById(R.id.page_text_view);
         changeViewButton = findViewById(R.id.change_view_button);
@@ -56,6 +55,14 @@ public class SearchResultActivity extends SidebarActivity implements View.OnClic
         prevPageButton.setOnClickListener(this);
         nextPageButton.setOnClickListener(this);
         if(savedInstanceState==null){
+            Bundle extras = getIntent().getExtras();
+            String zipcode = extras.getString("zipcode");
+            String breed = extras.getString("breed");
+            String sex = extras.getString("sex");
+            String minAge=extras.getString("minAge");
+            String maxAge=extras.getString("maxAge");
+            String size = extras.getString("size");
+            viewModel.QueryDatabase(zipcode,breed,sex,minAge,maxAge,size);
             currentView=GRID_VIEW;
             currentPage=1;
         }

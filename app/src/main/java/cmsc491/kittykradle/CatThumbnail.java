@@ -43,7 +43,7 @@ public class CatThumbnail extends Fragment implements View.OnClickListener, View
         catName = name;
         catGender=gender;
         this.imageUrl=imageUrl;
-        if(gender.equals("male")) {
+        if(gender.equals("M")) {
             textColor = R.color.blue;
             selectedBg=R.drawable.text_border_male;
         }
