@@ -48,9 +48,6 @@ public class SidebarActivity extends AppCompatActivity
         drawerLayout = findViewById(R.id.drawer_layout);
         fm = getSupportFragmentManager();
 
-
-
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
@@ -139,7 +136,7 @@ public class SidebarActivity extends AppCompatActivity
     }
 
     private void homepage() {
-        if(this.getClass()!=Homepage.class) {
+        if(this.getClass() != Homepage.class) {
             Intent i = new Intent(this, Homepage.class);
             startActivity(i);
         }
@@ -147,7 +144,7 @@ public class SidebarActivity extends AppCompatActivity
 
     private void goToFaq()
     {
-        if(this.getClass()!=FAQActivity.class) {
+        if(this.getClass() != FAQActivity.class) {
             Intent i = new Intent(this, FAQActivity.class);
             startActivity(i);
         }
@@ -156,7 +153,7 @@ public class SidebarActivity extends AppCompatActivity
     // Goes to the search screen
     private void search()
     {
-        if(this.getClass()!=SearchActivity.class) {
+        if(this.getClass() != SearchActivity.class) {
             Intent i = new Intent(this, SearchActivity.class);
             startActivity(i);
         }
@@ -164,17 +161,20 @@ public class SidebarActivity extends AppCompatActivity
 
     // Go to favorites screen
     private void favorites() {
-        if(this.getClass()!=FavoritesActivity.class) {
+        if(this.getClass() != FavoritesActivity.class) {
             Intent i = new Intent(this, FavoritesActivity.class);
             startActivity(i);
         }
     }
+
+    // Go to settings
     private void settings(){
-        if(this.getClass()!=Settings.class) {
+        if(this.getClass() != Settings.class) {
             Intent i = new Intent(this, Settings.class);
             startActivity(i);
         }
     }
+
     // Clears the activity stack and goes back to the Login page
     private void logout()
     {

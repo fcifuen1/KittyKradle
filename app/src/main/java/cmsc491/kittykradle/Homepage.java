@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Homepage extends SidebarActivity {
+public class Homepage extends SidebarActivity
+{
 
     Button toSearch, toFaq;
 
@@ -31,6 +32,15 @@ public class Homepage extends SidebarActivity {
                 goToFaq();
             }
         });
+
+        // Get Username from login
+        /*
+        if (getIntent().getStringExtra("Username") != null)
+        {
+            // Set the sidebar username
+            // in layout/nav_header_sidebar.xml
+        }
+        */
     }
 
     private void goToSearch(){

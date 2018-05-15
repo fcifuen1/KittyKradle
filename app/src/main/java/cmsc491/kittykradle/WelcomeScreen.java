@@ -9,7 +9,7 @@ import android.util.Log;
 
 public class WelcomeScreen extends AppCompatActivity
 {
-    private final int DELAY = 1000 * 2; // 2 seconds
+    private final int DELAY = 1000; // 1 second
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,7 @@ public class WelcomeScreen extends AppCompatActivity
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Homepage.class);
                 startActivity(intent);
                 finish();
             }

@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 BackgroundTask task = new BackgroundTask();
-                task.execute(username.getText().toString(),password.getText().toString());
+                task.execute(username.getText().toString(), password.getText().toString());
             }});
 
         toRegisterBTN.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity
     }
 
     private void goToRegistration(){
-        Intent intent = new Intent(this,RegistrationActivity.class);
+        Intent intent = new Intent(this, RegistrationActivity.class);
         //Passing the link to other activities
         intent.putExtra("link", urlLink);
         startActivity(intent);
