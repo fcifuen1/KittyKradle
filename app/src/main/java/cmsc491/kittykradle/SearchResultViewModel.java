@@ -144,7 +144,7 @@ public class SearchResultViewModel extends ViewModel {
                         .appendQueryParameter("maxAge",query.maxAge)
                         .appendQueryParameter("size",query.size);
                 String encodedQuery = builder.build().getEncodedQuery();
-                Log.d("kue",encodedQuery);
+                //Log.d("kue",encodedQuery);
                 OutputStream outputpost = conn.getOutputStream();
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputpost, "UTF-8"));
                 writer.write(encodedQuery);
