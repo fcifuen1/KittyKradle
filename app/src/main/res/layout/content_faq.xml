@@ -26,10 +26,43 @@
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
                 android:textColor="@color/pink"
+                android:textStyle="bold"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"/>
 
             <!-- THE FIRST BUTTON, THE SEARCH BUTTON -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                >
+                <TextView
+                    android:id="@+id/missionQuestion"
+                    android:text="What is our mission?"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/blue" />
+                <ImageButton
+                    android:id="@+id/missionButton"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:adjustViewBounds="true"
+                    android:background="#0000"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/arrow_grey_right"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/missionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textSize="20dp"
+                android:textColor="@color/darkGray" />
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -193,16 +226,7 @@
                 android:textSize="20dp"
                 android:textColor="@color/darkGray"
                 />
-            <TextView
-                android:id="@+id/missionText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:textSize="20dp"
-                android:textColor="@color/darkGray"
-                />
+
             <!-- the post-faq contact us stuff -->
 
             <TextView
