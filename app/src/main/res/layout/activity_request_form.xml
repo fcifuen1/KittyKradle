@@ -38,16 +38,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="first name"
+                android:text="username"
                 android:textColor="@color/pink" />
 
             <EditText
-                android:id="@+id/firstname"
+                android:id="@+id/userName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/roundedtextbox_greyborder"
-                android:hint="first name"
+                android:hint="username"
                 android:padding="5dp" />
 
             <TextView
@@ -55,15 +55,15 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:textColor="@color/pink"
-                android:text="last name"/>
+                android:text="password"/>
 
             <EditText
-                android:id="@+id/lastname"
+                android:id="@+id/userPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/roundedtextbox_greyborder"
-                android:hint="last name"
+                android:hint="password"
                 android:padding="5dp" />
 
             <TextView
@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:textColor="@color/pink"
-                android:text="email"/>
+                android:text="e-mail"/>
 
             <EditText
                 android:id="@+id/email"
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/roundedtextbox_greyborder"
-                android:hint="email"
+                android:hint="e-mail"
                 android:padding="5dp" />
 
             <Button
