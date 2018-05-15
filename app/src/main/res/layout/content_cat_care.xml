@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".FAQActivity"
-    tools:showIn="@layout/activity_faq">
+    tools:context=".CatCareActivity"
+    tools:showIn="@layout/activity_cat_care">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,8 +20,8 @@
             android:paddingRight="20dp">
 
             <TextView
-                android:id="@+id/faqLabel"
-                android:text="faq."
+                android:id="@+id/catCareLabel"
+                android:text="cat care."
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
@@ -29,7 +29,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"/>
 
-            <!-- THE FIRST BUTTON, THE SEARCH BUTTON -->
+            <!-- THE FIRST BUTTON, THE SAFETY BUTTON -->
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -37,14 +37,14 @@
                 android:layout_marginTop="10dp"
                 >
                 <TextView
-                    android:id="@+id/searchQuestion"
-                    android:text="How do I search for a cat?"
+                    android:id="@+id/safetyQuestion"
+                    android:text="keeping cats safe"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:textSize="20dp"
                     android:textColor="@color/blue" />
                 <ImageButton
-                    android:id="@+id/searchButton"
+                    android:id="@+id/safetyButton"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:adjustViewBounds="true"
@@ -54,7 +54,7 @@
                     android:layout_alignParentRight="true" />
             </RelativeLayout>
             <TextView
-                android:id="@+id/searchText"
+                android:id="@+id/safetyText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -62,21 +62,21 @@
                 android:textSize="20dp"
                 android:textColor="@color/darkGray" />
 
-            <!-- THE SECOND BUTTON, THE ADOPT BUTTON -->
+            <!-- THE SECOND BUTTON, THE FEEDING BUTTON -->
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
                 <TextView
-                    android:id="@+id/adoptQuestion"
-                    android:text="How do I adopt a cat I see \non Kitty Kradle?"
+                    android:id="@+id/feedingQuestion"
+                    android:text="feeding your cat"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:textSize="20dp"
                     android:textColor="@color/blue"/>
                 <ImageButton
-                    android:id="@+id/adoptButton"
+                    android:id="@+id/feedingButton"
                     android:src="@drawable/arrow_grey_right"
                     android:background="#0000"
                     android:layout_width="30dp"
@@ -86,7 +86,7 @@
                     android:layout_alignParentRight="true"/>
             </RelativeLayout>
             <TextView
-                android:id="@+id/adoptText"
+                android:id="@+id/feedingText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -95,21 +95,21 @@
                 android:textColor="@color/darkGray"
                 />
 
-            <!-- THE THIRD BUTTON, THE APPROVAL BUTTON -->
+            <!-- THE THIRD BUTTON, THE HEALTHY BUTTON -->
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
                 <TextView
-                    android:id="@+id/approvalQuestion"
-                    android:text="How will I know if I've been \napproved to adopt a cat?"
+                    android:id="@+id/healthyQuestion"
+                    android:text="staying healthy"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:textSize="20dp"
                     android:textColor="@color/blue"/>
                 <ImageButton
-                    android:id="@+id/approvalButton"
+                    android:id="@+id/healthyButton"
                     android:src="@drawable/arrow_grey_right"
                     android:background="#0000"
                     android:layout_width="30dp"
@@ -119,7 +119,7 @@
                     android:layout_alignParentRight="true"/>
             </RelativeLayout>
             <TextView
-                android:id="@+id/approvalText"
+                android:id="@+id/healthyText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -128,21 +128,21 @@
                 android:textColor="@color/darkGray"
                 />
 
-            <!-- THE FOURTH BUTTON, THE ADOPTABILITY QUESTION -->
+            <!-- THE FOURTH BUTTON, THE LITTERBOX QUESTION -->
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
                 <TextView
-                    android:id="@+id/adoptabilityQuestion"
-                    android:text="Is the cat I see on Kitty \nKradle still adoptable?"
+                    android:id="@+id/litterboxQuestion"
+                    android:text="litter box 101"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:textSize="20dp"
                     android:textColor="@color/blue"/>
                 <ImageButton
-                    android:id="@+id/adoptabilityButton"
+                    android:id="@+id/litterboxButton"
                     android:src="@drawable/arrow_grey_right"
                     android:background="#0000"
                     android:layout_width="30dp"
@@ -152,7 +152,7 @@
                     android:layout_alignParentRight="true"/>
             </RelativeLayout>
             <TextView
-                android:id="@+id/adoptabilityText"
+                android:id="@+id/litterboxText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -161,21 +161,21 @@
                 android:textColor="@color/darkGray"
                 />
 
-            <!-- THE FIFTH BUTTON, THE STATE BUTTON -->
+            <!-- THE FIFTH BUTTON, THE TRAINING BUTTON -->
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
                 <TextView
-                    android:id="@+id/stateQuestion"
-                    android:text="Can I adopt a cat who's \nout of state?"
+                    android:id="@+id/trainingQuestion"
+                    android:text="training your cat"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:textSize="20dp"
                     android:textColor="@color/blue"/>
                 <ImageButton
-                    android:id="@+id/stateButton"
+                    android:id="@+id/trainingButton"
                     android:src="@drawable/arrow_grey_right"
                     android:background="#0000"
                     android:layout_width="30dp"
@@ -185,7 +185,7 @@
                     android:layout_alignParentRight="true"/>
             </RelativeLayout>
             <TextView
-                android:id="@+id/stateText"
+                android:id="@+id/trainingText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -194,7 +194,7 @@
                 android:textColor="@color/darkGray"
                 />
 
-            <!-- the post-faq contact us stuff -->
+            <!-- the post-catcare contact us stuff -->
 
             <TextView
                 android:id="@+id/contactText"

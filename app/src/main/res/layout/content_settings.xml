@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Settings"
+    tools:showIn="@layout/activity_settings" >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="settings."
+            android:textColor="@color/pink"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <!--First Setting:  Edit Profile-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="edit profile"
+                android:textColor="@color/blue"
+                android:textSize="20dp"/>
+
+            <ImageButton
+                android:id="@+id/setting_editProfileBTN"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:adjustViewBounds="true"
+                android:background="#0000"
+                android:scaleType="centerInside"
+                android:src="@drawable/arrow_grey_right"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/setting_editprofile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/darkGray"
+            android:textSize="20dp"
+            android:layout_marginRight="50dp"/>
+
+        <!--Second Setting:  Facebook link-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="link to facebook"
+                android:textColor="@color/blue"
+                android:textSize="20dp"/>
+
+            <ImageButton
+                android:id="@+id/setting_facebookBTN"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:adjustViewBounds="true"
+                android:background="#0000"
+                android:scaleType="centerInside"
+                android:src="@drawable/arrow_grey_right"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/setting_facebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/darkGray"
+            android:textSize="20dp" />
+        <!--Third Setting:  Language-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="language"
+                android:textColor="@color/blue"
+                android:textSize="20dp"/>
+            <ImageButton
+                android:id="@+id/setting_languageBTN"
+                android:src="@drawable/arrow_grey_right"
+                android:background="#0000"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/setting_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/darkGray" />
+        <!--Fourth Setting:  Notification Setting-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="notification settings"
+                android:textColor="@color/blue"
+                android:textSize="20dp"/>
+            <ImageButton
+                android:id="@+id/setting_notificationBTN"
+                android:src="@drawable/arrow_grey_right"
+                android:background="#0000"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/setting_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/darkGray" />
+        <!--Fifth Setting:  Change Password-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="change password"
+                android:textColor="@color/blue"
+                android:textSize="20dp"/>
+            <ImageButton
+                android:id="@+id/setting_changePsswordBTN"
+                android:src="@drawable/arrow_grey_right"
+                android:background="#0000"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/setting_changepassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/darkGray" />
+        <!--Sixth Setting:  Delete Account-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="delete account"
+                android:textColor="@color/blue"
+                android:textSize="20dp"/>
+            <ImageButton
+                android:id="@+id/setting_deleteAccBTN"
+                android:src="@drawable/arrow_grey_right"
+                android:background="#0000"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/setting_deleteaccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/darkGray" />
+        <!--Last Setting:  Logout-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="logout"
+                android:textColor="@color/blue"
+                android:textSize="20dp"/>
+            <ImageButton
+                android:id="@+id/setting_logoutBTN"
+                android:src="@drawable/arrow_grey_right"
+                android:background="#0000"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/setting_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/darkGray" />
+        <TextView
+            android:id="@+id/contactText"
+            android:text="questions?"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/darkGray"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+        <Button
+            android:id="@+id/toContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="contact us"
+            android:textAllCaps="false"
+            android:background="@drawable/pinkbutton"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_marginBottom="20dp"/>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

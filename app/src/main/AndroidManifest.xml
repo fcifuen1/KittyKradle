@@ -29,17 +29,18 @@
         <activity android:name=".RequestFormActivity" />
         <activity
             android:name=".FAQActivity"
-            android:label="@string/title_activity_faq"
-             />
-        <activity
-            android:name=".SearchActivity"
-            />
+            android:label="@string/title_activity_faq" />
+        <activity android:name=".SearchActivity" />
         <activity
             android:name=".ContactActivity"
-            android:label="@string/title_activity_contact"
-           />
+            android:label="@string/title_activity_contact" />
         <activity android:name=".FavoritesActivity" />
-        <activity android:name=".Homepage"></activity>
+        <activity android:name=".Homepage" />
+        <activity android:name=".Settings" />
+        <activity
+            android:name=".CatCareActivity"
+            android:label="@string/title_activity_cat_care"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
