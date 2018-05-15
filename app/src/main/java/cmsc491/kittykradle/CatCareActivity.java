@@ -27,7 +27,7 @@ public class CatCareActivity extends SidebarActivity {
         setContentView(R.layout.activity_cat_care);
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Kitty Kradle");
+        getSupportActionBar().setTitle("Kitty Kradlez");
 
         final TextView safetyText = findViewById(R.id.safetyText);
         ImageButton safetyButton = findViewById(R.id.safetyButton);

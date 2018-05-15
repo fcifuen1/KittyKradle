@@ -1,10 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cmsc491.kittykradle.CatProfileActivity">
+    android:fitsSystemWindows="false"
+    tools:context=".CatProfileActivity"
+    tools:openDrawer="start">
 
-</android.support.constraint.ConstraintLayout>
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/catName"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginHorizontal="50dp"
+                    android:text="TextView"
+                    tools:textColor="@color/white" />
+                <ImageView
+                    android:id="@+id/catImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginHorizontal="50dp"
+                    app:srcCompat="@mipmap/kk_logo" />
+
+                <!-- Location -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginHorizontal="50dp"
+                    android:paddingHorizontal="0dp"
+                    android:orientation="horizontal"
+                    android:gravity="left">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        app:srcCompat="@drawable/location_white" />
+                    <TextView
+                        android:id="@+id/catLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <!-- Favourites -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginHorizontal="50dp"
+                    android:paddingHorizontal="0dp"
+                    android:orientation="horizontal"
+                    android:gravity="left">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        app:srcCompat="@drawable/heart_white" />
+                    <TextView
+                        android:id="@+id/catFavourites"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <!-- Bio -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginHorizontal="50dp"
+                    android:paddingHorizontal="0dp"
+                    android:orientation="horizontal"
+                    android:gravity="left">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        app:srcCompat="@drawable/info_white" />
+                    <TextView
+                        android:id="@+id/catBio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <!-- Favourite Button -->
+                <!-- REturn Button -->
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </FrameLayout>
+
+    <!-- Container for contents of the sidebar -->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_sidebar"
+        app:menu="@menu/activity_sidebar_drawer" />
+
+</android.support.v4.widget.DrawerLayout>
+

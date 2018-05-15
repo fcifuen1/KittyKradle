@@ -119,7 +119,7 @@ public class SearchResultViewModel extends ViewModel {
     private class QueryServerTask extends AsyncTask<Query, String, String>{
         HttpsURLConnection conn;
         URL url = null;
-        String urlLink = "https://ff77f6e9.ngrok.io";
+        String urlLink = "https://8cac4458.ngrok.io";
 
         @Override
         protected String doInBackground(Query... params) {
