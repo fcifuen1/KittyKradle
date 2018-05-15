@@ -26,12 +26,12 @@ $result = array();
 
 $sql = "SELECT cat_info.cat_id, cat_info.name, cat_detail.sex, cat_info.picture_url
 FROM cat_info INNER JOIN cat_detail ON cat_info.cat_id =cat_detail.cat_id
-WHERE (cat_info.zipcode='$zipcode' OR '$zipcode' ='null')
-   OR (cat_detail.breed='$breed' )
-   OR (cat_detail.sex='$sex')
-   OR (cat_detail.age >'$minAge' 
-   AND cat_detail.age < '$maxAge')
-   OR (cat_detail.size='$size')";
+WHERE (cat_info.zipcode='$zipcode' OR '$zipcode' = 'null')
+   AND (cat_detail.breed='$breed' OR '$breed' = 'null')
+   AND (cat_detail.sex='$sex' OR '$sex' = 'null')
+   AND (cat_detail.age >'$minAge' OR '$minAge' = 'null') 
+   AND (cat_detail.age < '$maxAge' OR '$maxAge' = 'null')
+   AND (cat_detail.size='$size' OR '$size' = 'null')";
 $query = mysqli_query($conn,$sql);
 
 while($row = mysqli_fetch_array($query)){

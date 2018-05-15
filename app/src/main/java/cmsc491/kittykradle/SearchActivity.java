@@ -75,7 +75,7 @@ public class SearchActivity extends SidebarActivity
             bundle.putString("breed", breed.getSelectedItem().toString());
         }
         if(sex.getSelectedItemPosition()>0){
-            bundle.putString("sex", sex.getSelectedItem().toString());
+            bundle.putString("sex", sex.getSelectedItem().toString().equals("male")?"M":"F");
         }
         bundle.putString("minAge", minAge.getText().toString());
         bundle.putString("maxAge", maxAge.getText().toString());
