@@ -18,7 +18,7 @@
 
     <include layout="@layout/content_contact" />
     </android.support.design.widget.CoordinatorLayout>
-    <!-- Container for contents of the sidebar -->
+     <!--Container for contents of the sidebar -->
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"

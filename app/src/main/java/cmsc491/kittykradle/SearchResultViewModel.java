@@ -124,8 +124,6 @@ public class SearchResultViewModel extends ViewModel {
         @Override
         protected String doInBackground(Query... params) {
             Query query=params[0];
-            //return "[{\"id\":0,\"name\":\"Angel\",\"gender\":\"male\",\"imgUrl\":\"http://oi1126.photobucket.com/albums/l606/kuochine/angel_zpskxewvgnw.jpg\"},{\"id\":1,\"name\":\"Wombat\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/wombat_zpszfcg8lm8.jpg\"},{\"id\":2,\"name\":\"Butter\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/butters_zpsr0bl0mev.jpg\"},{\"id\":3,\"name\":\"Joey\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/joey_zpsniyjhxov.jpeg\"},{\"id\":4,\"name\":\"Nando\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/nando_zpsqtire7hv.jpg\"},{\"id\":5,\"name\":\"Cucumber\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/cucumber_zpsnepyeosq.jpg\"},{\"id\":6,\"name\":\"Jasmine\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/jasmine_zpslwaba5va.jpg\"},{\"id\":7,\"name\":\"Paisley\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/paisley_zpseh1v9saj.jpg\"},{\"id\":1,\"name\":\"Wombat\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/wombat_zpszfcg8lm8.jpg\"},{\"id\":2,\"name\":\"Butter\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/butters_zpsr0bl0mev.jpg\"},{\"id\":3,\"name\":\"Joey\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/joey_zpsniyjhxov.jpeg\"},{\"id\":4,\"name\":\"Nando\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/nando_zpsqtire7hv.jpg\"},{\"id\":5,\"name\":\"Cucumber\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/cucumber_zpsnepyeosq.jpg\"},{\"id\":6,\"name\":\"Jasmine\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/jasmine_zpslwaba5va.jpg\"},{\"id\":7,\"name\":\"Paisley\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/paisley_zpseh1v9saj.jpg\"}]";
-            //return "[{\"id\":0,\"name\":\"Angel\",\"gender\":\"male\",\"imgUrl\":\"http://oi1126.photobucket.com/albums/l606/kuochine/angel_zpskxewvgnw.jpg\"},{\"id\":1,\"name\":\"Wombat\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/wombat_zpszfcg8lm8.jpg\"},{\"id\":2,\"name\":\"Butter\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/butters_zpsr0bl0mev.jpg\"},{\"id\":3,\"name\":\"Joey\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/joey_zpsniyjhxov.jpeg\"},{\"id\":4,\"name\":\"Nando\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/nando_zpsqtire7hv.jpg\"},{\"id\":5,\"name\":\"Cucumber\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/cucumber_zpsnepyeosq.jpg\"},{\"id\":6,\"name\":\"Jasmine\",\"gender\":\"male\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/jasmine_zpslwaba5va.jpg\"},{\"id\":7,\"name\":\"Paisley\",\"gender\":\"female\",\"imgUrl\":\"http://i1126.photobucket.com/albums/l606/kuochine/paisley_zpseh1v9saj.jpg\"}]";
 
             try{
                 url = new URL(urlLink + "/kittykradle/Search.php");
@@ -144,7 +142,7 @@ public class SearchResultViewModel extends ViewModel {
                         .appendQueryParameter("maxAge",query.maxAge)
                         .appendQueryParameter("size",query.size);
                 String encodedQuery = builder.build().getEncodedQuery();
-                Log.d("kue",encodedQuery);
+                //Log.d("kue",encodedQuery);
                 OutputStream outputpost = conn.getOutputStream();
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputpost, "UTF-8"));
                 writer.write(encodedQuery);
@@ -175,7 +173,7 @@ public class SearchResultViewModel extends ViewModel {
 
         @Override
         protected void onPostExecute(String result) {
-            Log.d("kue",result);
+            //Log.d("kue",result);
             Gson gson = new Gson();
             JsonReader reader = new JsonReader(new StringReader(result));
             reader.setLenient(true);

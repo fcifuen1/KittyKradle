@@ -32,6 +32,7 @@ public class CatThumbnail extends Fragment implements View.OnClickListener, View
     private String imageUrl;
     private int textColor;
     private int selectedBg;
+    private Bitmap bitmap;
     OnFragmentInteractionListener mListener;
 
     public CatThumbnail() {
@@ -55,6 +56,7 @@ public class CatThumbnail extends Fragment implements View.OnClickListener, View
 
 
     public void setImage(Bitmap bmp){
+        this.bitmap=bmp;
         ImageView imgview = getView().findViewById(R.id.imageView);
         imgview.setImageBitmap(bmp);
     }
@@ -81,9 +83,13 @@ public class CatThumbnail extends Fragment implements View.OnClickListener, View
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cat_thumbnail, container, false);
-
+        if(this.bitmap!=null){
+            ImageView imgview = view.findViewById(R.id.imageView);
+            imgview.setImageBitmap(this.bitmap);
+        }
         view.setOnTouchListener(this);
         view.setOnClickListener(this);
         TextView textView = (TextView) (view.findViewById(R.id.textView));
