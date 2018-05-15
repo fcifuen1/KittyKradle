@@ -103,6 +103,9 @@ public class FAQActivity extends SidebarActivity {
             }
         });
 
+        final TextView missionText = findViewById(R.id.missionText);
+        missionText.setText("Kitty Kradle's mission is to make it easier for you to find your dream cat. Connect with various adoption agencies by simply sending a request.");
+
         contactBtn = (Button) findViewById(R.id.contactButton);
         contactBtn.setOnClickListener(new View.OnClickListener()  {
             @Override

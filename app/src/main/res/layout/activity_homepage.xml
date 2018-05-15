@@ -30,6 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="start search"
+                android:textSize="20dp"
                 android:textAllCaps="false"
                 android:background="@drawable/bluebutton"
                 android:textColor="@color/white"
@@ -39,7 +40,19 @@
                 android:id="@+id/tofaqBTN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="more info"
+                android:text="faq"
+                android:textSize="20dp"
+                android:textAllCaps="false"
+                android:background="@drawable/bluebutton"
+                android:textColor="@color/white"
+                android:layout_marginBottom="20dp"/>
+
+            <Button
+                android:id="@+id/toCatCareBTN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="cat care"
+                android:textSize="20dp"
                 android:textAllCaps="false"
                 android:background="@drawable/bluebutton"
                 android:textColor="@color/white"

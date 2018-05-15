@@ -6,10 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Homepage extends SidebarActivity
-{
+public class Homepage extends SidebarActivity {
 
-    Button toSearch, toFaq;
+    Button toSearch, toFaq, toCatCare;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +17,7 @@ public class Homepage extends SidebarActivity
 
         toSearch = (Button) findViewById(R.id.toSearchBTN);
         toFaq = (Button) findViewById(R.id.tofaqBTN);
+        toCatCare = (Button) findViewById(R.id.toCatCareBTN);
 
         toSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,14 +33,12 @@ public class Homepage extends SidebarActivity
             }
         });
 
-        // Get Username from login
-        /*
-        if (getIntent().getStringExtra("Username") != null)
-        {
-            // Set the sidebar username
-            // in layout/nav_header_sidebar.xml
-        }
-        */
+        toCatCare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToCatCare();
+            }
+        });
     }
 
     private void goToSearch(){
@@ -49,6 +47,10 @@ public class Homepage extends SidebarActivity
     }
     private void goToFaq(){
         Intent i = new Intent(this, FAQActivity.class);
+        startActivity(i);
+    }
+    private void goToCatCare(){
+        Intent i = new Intent(this, CatCareActivity.class);
         startActivity(i);
     }
 }
