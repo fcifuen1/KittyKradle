@@ -124,10 +124,15 @@ public class CatThumbnail extends Fragment implements View.OnClickListener, View
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(getActivity(),CatProfileActivity.class);
+        Bundle bundle = intent.getExtras();
+        bundle.putString("catId", Integer.toString(catId));
+        bundle.putString("catName", catName);
+        bundle.putString("imageUrl", imageUrl);
+        bundle.putString("textColor", Integer.toString(textColor));
+        bundle.putString("selectedBg", Integer.toString(selectedBg));
         startActivity(intent);
     }
     public interface OnFragmentInteractionListener {
         void onThumbnailSelected(CatThumbnail ct);
     }
-
 }
