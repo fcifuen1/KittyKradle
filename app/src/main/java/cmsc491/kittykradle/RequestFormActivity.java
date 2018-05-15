@@ -28,6 +28,10 @@ public class RequestFormActivity extends SidebarActivity
     private Spinner state, country, backgroundcheck, petinsurance;
     Button toSubmitBTN;
 
+    //URL link to server-side
+    Bundle extras;
+    String urlLink;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -45,6 +49,9 @@ public class RequestFormActivity extends SidebarActivity
         backgroundcheck = (Spinner) findViewById(R.id.backgroundcheck);
         petinsurance = (Spinner) findViewById(R.id.petinsurance);
         toSubmitBTN = (Button) findViewById(R.id.submitBTN);
+        //Receives the url link from log in activity
+        extras = getIntent().getExtras();
+        urlLink = extras.getString("link");
 
         // Set options for state
         ArrayAdapter<CharSequence> options_state =
