@@ -80,7 +80,20 @@ public class SearchActivity extends SidebarActivity
         bundle.putString("minAge", minAge.getText().toString());
         bundle.putString("maxAge", maxAge.getText().toString());
         if(size.getSelectedItemPosition()>0) {
-            bundle.putString("size", size.getSelectedItem().toString());
+            String size_str =size.getSelectedItem().toString();
+            switch (size_str){
+                case "small":
+                    bundle.putString("size","S");
+                    break;
+                case "medium":
+                    bundle.putString("size","M");
+                    break;
+                case "large":
+                    bundle.putString("size","L");
+                    break;
+                default:
+                    break;
+            }
         }
         i.putExtras(bundle);
         startActivity(i);
