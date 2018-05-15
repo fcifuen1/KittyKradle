@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity
     Button successBTN, toRegisterBTN;
 
     //URL link to server-side
-    String urlLink = "https://eb3de1e8.ngrok.io";
+    String urlLink = "https://8cac4458.ngrok.io";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -131,11 +131,11 @@ public class LoginActivity extends AppCompatActivity
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
+
             if(result.equalsIgnoreCase("success")){
                 signIn();
             }else if(result.equalsIgnoreCase("false")){
                 Toast.makeText(LoginActivity.this, "Invalid Username or Password.", Toast.LENGTH_LONG).show();
-
             }
 
         }

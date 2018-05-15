@@ -45,6 +45,7 @@ public class SearchResultViewModel extends ViewModel {
         size=(size==null||size.isEmpty())?"null":size;
 
         new QueryServerTask().execute(new Query(zipcode, breed, sex, minAge, maxAge, size));
+        Log.d("kue",zipcode+" "+breed+" "+sex+" "+minAge+" "+maxAge+" "+size);
     }
 
     public LiveData<Cat[]> getSearchResult(){
@@ -115,13 +116,13 @@ public class SearchResultViewModel extends ViewModel {
         }
     }
 
-    private class QueryServerTask extends AsyncTask<Query, String, Cat[]>{
+    private class QueryServerTask extends AsyncTask<Query, String, String>{
         HttpsURLConnection conn;
         URL url = null;
-        String urlLink = "https://eb3de1e8.ngrok.io";
+        String urlLink = "https://8cac4458.ngrok.io";
 
         @Override
-        protected Cat[] doInBackground(Query... params) {
+        protected String doInBackground(Query... params) {
             Query query=params[0];
 
             try{
@@ -159,13 +160,9 @@ public class SearchResultViewModel extends ViewModel {
                     while((line = reader.readLine()) != null){
                         result.append(line);
                     }
-                    Gson gson = new Gson();
-                    JsonReader jsonReader = new JsonReader(new StringReader(result.toString()));
-                    jsonReader.setLenient(true);
-                    return gson.fromJson(jsonReader, Cat[].class);
-                    //return(result.toString());
+                    return(result.toString());
                 }else{
-                    return null;
+                    return ("Bad Connection");
                 }
             }catch (Exception e){
                 e.printStackTrace();
@@ -175,8 +172,12 @@ public class SearchResultViewModel extends ViewModel {
         }
 
         @Override
-        protected void onPostExecute(Cat[] resultCats) {
-
+        protected void onPostExecute(String result) {
+            //Log.d("kue",result);
+            Gson gson = new Gson();
+            JsonReader reader = new JsonReader(new StringReader(result));
+            reader.setLenient(true);
+            Cat[] resultCats = gson.fromJson(reader, Cat[].class);
             searchResult.postValue(resultCats);
         }
     }

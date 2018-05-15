@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -130,12 +131,11 @@ public class CatThumbnail extends Fragment implements View.OnClickListener, View
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(getActivity(),CatProfileActivity.class);
-        Bundle bundle = intent.getExtras();
-        bundle.putString("catId", Integer.toString(catId));
-        bundle.putString("catName", catName);
-        bundle.putString("imageUrl", imageUrl);
-        bundle.putString("textColor", Integer.toString(textColor));
-        bundle.putString("selectedBg", Integer.toString(selectedBg));
+        intent.putExtra("catId", Integer.toString(catId));
+        intent.putExtra("catName", catName);
+        intent.putExtra("textColor", Integer.toString(textColor));
+        intent.putExtra("selectedBg", Integer.toString(selectedBg));
+        intent.putExtra("imageUrl", imageUrl);
         startActivity(intent);
     }
     public interface OnFragmentInteractionListener {
