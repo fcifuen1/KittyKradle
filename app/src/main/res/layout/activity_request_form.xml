@@ -38,16 +38,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="username"
+                android:text="first name"
                 android:textColor="@color/pink" />
 
             <EditText
-                android:id="@+id/userName"
+                android:id="@+id/firstname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/roundedtextbox_greyborder"
-                android:hint="username"
+                android:hint="first name"
                 android:padding="5dp" />
 
             <TextView
@@ -55,15 +55,15 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:textColor="@color/pink"
-                android:text="password"/>
+                android:text="last name"/>
 
             <EditText
-                android:id="@+id/userPassword"
+                android:id="@+id/lastname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/roundedtextbox_greyborder"
-                android:hint="password"
+                android:hint="last name"
                 android:padding="5dp" />
 
             <TextView
@@ -71,16 +71,124 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:textColor="@color/pink"
-                android:text="e-mail"/>
+                android:text="phone number"/>
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/phonenumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/roundedtextbox_greyborder"
-                android:hint="e-mail"
+                android:hint="phone number"
                 android:padding="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textColor="@color/pink"
+                android:text="address"/>
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/roundedtextbox_greyborder"
+                android:hint="address"
+                android:padding="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textColor="@color/pink"
+                android:text="city"/>
+
+            <EditText
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/roundedtextbox_greyborder"
+                android:hint="city"
+                android:padding="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textColor="@color/pink"
+                android:text="state"/>
+
+            <Spinner
+                android:id="@+id/state"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/roundedtextbox_greyborder"
+                android:hint="select"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textColor="@color/pink"
+                android:text="country"/>
+
+            <Spinner
+                android:id="@+id/country"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/roundedtextbox_greyborder"
+                android:hint="select"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textColor="@color/pink"
+                android:text="zipcode"/>
+
+            <EditText
+                android:id="@+id/zipcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/roundedtextbox_greyborder"
+                android:hint="zipcode"
+                android:padding="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textColor="@color/pink"
+                android:text="background check"/>
+
+            <Spinner
+                android:id="@+id/backgroundcheck"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/roundedtextbox_greyborder"
+                android:hint="select"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textColor="@color/pink"
+                android:text="pet insurance"/>
+
+            <Spinner
+                android:id="@+id/petinsurance"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/roundedtextbox_greyborder"
+                android:hint="select"/>
 
             <Button
                 android:id="@+id/submitBTN"

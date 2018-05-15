@@ -2,13 +2,14 @@
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+    tools:showIn="navigation_view"
+    >
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/home"
-            android:icon="@drawable/search_blue"
-            android:title="home" />
+            android:icon="@drawable/phone_pink"
+            android:title="home"/>
         <item
             android:id="@+id/search"
             android:icon="@drawable/search_pink"

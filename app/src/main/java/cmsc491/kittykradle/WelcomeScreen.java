@@ -9,7 +9,7 @@ import android.util.Log;
 
 public class WelcomeScreen extends AppCompatActivity
 {
-    private final int DELAY = 1000 * 2; // 2 seconds
+    private final int DELAY = 1000; // 1 second
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
